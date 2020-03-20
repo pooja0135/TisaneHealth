@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardviewDetail"
+            app:cardCornerRadius="@dimen/_5sdp"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="DS ID"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvDsdId"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="DS Name"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvDsdname"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Admin Charges"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvAdminCharges"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="TDS(Tax Deduction at  Source)"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvTDS"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Payable Amount"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvPayable"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cashback(10%)"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvCashback"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Company Turnover"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvCompanyTurnover"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Generate Date"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/colorPrimary"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tvBankDetail"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Bank \nDetails"
+                            android:textSize="@dimen/_12sdp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/rectangle_button"
+                            />
+                        <TextView
+                            android:id="@+id/tvBusinessDetail"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Business Details"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/rectangle_button"/>
+
+                        <TextView
+                            android:id="@+id/tvIncomeDetail"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Income Details"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/rectangle_button"/>
+
+                        <TextView
+                            android:id="@+id/tvAcheiverDetail"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:paddingBottom="@dimen/_2sdp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Achiever Details"
+                            android:textSize="@dimen/_12sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:textColor="@color/white"
+                            android:background="@drawable/rectangle_button"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginBottom="@dimen/_45sdp"
+                        android:visibility="gone"
+                        android:id="@+id/cardviewBank"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_alignParentBottom="true"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardBackgroundColor="@color/grey_200"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bank Name"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvBankName"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="SBI"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Account\n Number"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvAccountNumber"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="RT478575757"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="IFSC Code"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvIfsc"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="ty565566556"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                       android:visibility="gone"
+                        android:layout_marginBottom="@dimen/_45sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:id="@+id/cardviewBusiness"
+                        android:layout_marginLeft="@dimen/_40sdp"
+                        android:layout_alignParentBottom="true"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardBackgroundColor="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Self Business(Fresh):"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvSelfBusinessFresh"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Self Business (Repurchase):"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvSelfBusinessRepurchase"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Team Business:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvTeamBusiness"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Direct Team Business:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvDirectTeamBusiness"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Previous Business:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvPreviousBusiness"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:layout_marginBottom="@dimen/_45sdp"
+                        android:id="@+id/cardviewCommission"
+                        android:layout_marginLeft="@dimen/_100sdp"
+                        android:layout_alignParentBottom="true"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardBackgroundColor="@color/grey_200"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            android:layout_width="@dimen/_150sdp"
+                            android:layout_height="wrap_content">
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:layout_marginBottom="@dimen/_45sdp"
+                        android:layout_gravity="end|right"
+                        android:id="@+id/cardviewIncome"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_alignParentBottom="true"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardBackgroundColor="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Team Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvTeamIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Team Commission:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvTeamCommission"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Direct Team Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvDirectTeamIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Gold Level Income\n(Direct Team Income):"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvGoldLevelIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Platinum Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvPlatinumIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Platinum Distribute Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvPlatinumDistributeIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Diamond Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvDiamondIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Diamond Distribute Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvDiamondDistributeIncome"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Total Income:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvTotalIncome"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:visibility="gone"
+                        android:layout_marginBottom="@dimen/_45sdp"
+                        android:id="@+id/cardviewAcheiver"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_100sdp"
+                        android:layout_alignParentBottom="true"
+                        app:cardCornerRadius="@dimen/_5sdp"
+                        app:cardBackgroundColor="@color/grey_200"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_margin="@dimen/_5sdp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Platinum Achiever:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvPlatinumAcheiver"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:gravity="center"
+                                    android:layout_weight="1.5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Diamond Achiever:"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+                                <TextView
+                                    android:id="@+id/tvDiamondAcheiver"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="@dimen/_10sdp"/>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

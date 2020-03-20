@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="menu_array">
+        <item>@drawable/ic_home</item>
+        <item>@drawable/ic_add_user</item>
+        <item>@drawable/ic_service</item>
+        <item>@drawable/ic_team</item>
+        <item>@drawable/ic_report</item>
+        <item>@drawable/ic_purchase</item>
+        <item>@drawable/ic_pinmanagement</item>
+        <item>@drawable/ic_bankvalue</item>
+        <item>@drawable/ic_wallet</item>
+        <item>@drawable/ic_transfer</item>
+        <item>@drawable/ic_purchase</item>
+        <item>@drawable/ic_shopping_bag</item>
+        <item>@drawable/ic_transfer</item>
+        <item>@drawable/ic_logout</item>
+
+    </integer-array>
+
+    <string-array name="MenuTitles">
+        <item>Home</item>
+        <item>Add Associate</item>
+        <item>Settings</item>
+        <item>My Team</item>
+        <item>Payout Report</item>
+        <item>Member TopUp</item>
+        <item>Pin Management</item>
+        <item>My Bank</item>
+        <item>Add Money</item>
+        <item>Recharge History</item>
+        <item>Repurchase</item>
+        <item>Deal with Us</item>
+        <item>Money Transfer History</item>
+        <item>Logout</item>
+
+    </string-array>
+
+
+        <integer-array name="menu_array_guest">
+            <item>@drawable/ic_home</item>
+            <item>@drawable/ic_wallet</item>
+            <item>@drawable/ic_transfer</item>
+            <item>@drawable/ic_shopping_bag</item>
+            <item>@drawable/ic_transfer</item>
+            <item>@drawable/ic_logout</item>
+
+        </integer-array>
+
+
+    <string-array name="MenuTitlesGuest">
+        <item>Home</item>
+        <item>Add Money</item>
+        <item>Recharge History</item>
+        <item>Deal with Us</item>
+        <item>Money Transfer History</item>
+        <item>Logout</item>
+
+    </string-array>
+
+
+</resources>
+
+<!--
+<item>Recharge</item>
+<item>@drawable/ic_recharge</item>-->

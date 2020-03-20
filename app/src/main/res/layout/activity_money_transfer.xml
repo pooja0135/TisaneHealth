@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".recharge_pay_bill.money_transfer.MoneyTransferActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@color/green_600">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_arrow_right"
+            android:rotation="180"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Money Transfer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Mobile Number"
+       android:textColor="@color/black"
+       android:textSize="@dimen/_12sdp"
+       android:padding="@dimen/_10sdp"
+       android:layout_marginLeft="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/rectangle_grey1"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:focusable="false"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/_5sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        android:id="@+id/tvMobile"/>
+
+
+
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/_30sdp"
+       android:background="@drawable/rectangle_button"
+       android:layout_margin="@dimen/_15sdp"
+       android:text="Verify Mobile Number"
+       android:textSize="@dimen/_14sdp"
+       android:textColor="@color/white"
+       android:textAllCaps="false"
+       android:id="@+id/btnSend"/>
+
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note: This otp used for mobile number verification."
+            android:textColor="@color/red_600"
+            android:textSize="@dimen/_11sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otp Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+        <EditText
+            android:id="@+id/etOtp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:background="@drawable/rectangle_grey1"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:paddingLeft="@dimen/_5sdp"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend Otp"
+            android:padding="@dimen/_7sdp"
+            android:layout_gravity="end"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:id="@+id/tvResend"
+            android:layout_marginRight="@dimen/_10sdp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_button"
+            android:layout_margin="@dimen/_15sdp"
+            android:text="Verify OTP"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:id="@+id/btnVerify"/>
+
+
+      >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llBankOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note: This otp used for bank account number verification."
+            android:textColor="@color/red_600"
+            android:textSize="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dear customer one time password for bank verification send on your registered mobile number.Please verify OTP and continue your service. Thank you team e-Tisane."
+            android:textColor="@color/red_600"
+            android:textSize="@dimen/_10sdp"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otp Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+        <EditText
+            android:id="@+id/etBankOtp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:background="@drawable/rectangle_grey1"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:paddingLeft="@dimen/_5sdp"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_button"
+            android:layout_margin="@dimen/_15sdp"
+            android:text="Verify OTP"
+            android:textSize="@dimen/_14sdp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:id="@+id/btnBankVerify"/>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

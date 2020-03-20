@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:text="@string/instructions_to_update_payment_information"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/black"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fund_transfer_terms_condition"/>
+
+
+            <ImageView
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/warning"/>
+
+          <CheckBox
+              android:id="@+id/checkbox"
+              android:buttonTint="@color/colorPrimary"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="I agree the above terms and confirm the same"
+              android:textSize="@dimen/_10sdp"
+              android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:id="@+id/btnSubmit"
+                android:background="@drawable/registration_background"
+                android:text="Submit"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:textAllCaps="false"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

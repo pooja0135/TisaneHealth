@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_20sdp"
+        android:id="@+id/sv_left_header"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:orientation="vertical"
+        android:layout_height="@dimen/_70sdp">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="@dimen/_58sdp">
+
+            <ImageView
+                android:layout_width="@dimen/_50sdp"
+                android:id="@+id/Author_Avatar"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:srcCompat="@drawable/user" />
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/tvUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="ttttttggg"
+
+                    android:textColor="@android:color/white"
+                    />
+                <TextView
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="55455566677"
+                    android:id="@+id/tvUserMobile"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

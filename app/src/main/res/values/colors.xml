@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#429E35</color>
+    <color name="colorPrimaryDark">#2D8B20</color>
+    <color name="colorAccent">#44A536</color>
+    <color name="background">#285959</color>
+    <color name="blue_color">#2893EE</color>
+    <color name="dark_blue_color">#526EC1</color>
+    <color name="text_color">#4763DF</color>
+    <color name="mustard_color">#F2721D</color>
+    <color name="header_color">#44AC9E</color>
+    <color name="ligth_blue_color">#2F6184</color>
+    <color name="lightcream_color">#F7E3E9</color>
+    <color name="lightcream">#F8F4F4</color>
+    <color name="green_color">#48A336</color>
+    <color name="black_trans">#99000000</color>
+    <color name="white_off">#F5F5F5</color>
+
+
+    <color name="color_list1">#D6598D</color>
+    <color name="color_list2">#CFAF35</color>
+    <color name="color_list3">#5064D8</color>
+    <color name="color_list4">#E06139</color>
+    <color name="color_list5">#FF4081</color>
+    <color name="color_list6">#1CCCCC</color>
+    <color name="color_list7">#4FB940</color>
+
+</resources>
+
+
+<!--<color name="colorPrimary">#D11D14</color>-->
+<!--<color name="colorPrimaryDark">#DA251C</color>-->
+<!--<color name="colorAccent">#E92E25</color>-->

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Member Id"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:editable="false"
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etMemberId"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Applicant Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etApplicantName"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etAddress"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payee Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etPayee"/>
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Account Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etBankAccountNumber"/>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etBankName"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank IFSC Code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etBankIfsc"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bank Branch"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:id="@+id/etBankBranch"/>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transfer Wallet"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:id="@+id/etTransferWallet"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:id="@+id/etDate"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:editable="false"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:id="@+id/etMobile"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Request Wallet Amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"
+            />
+        <EditText
+            android:paddingLeft="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:id="@+id/etRequestWallet"
+            android:inputType="number"
+            />
+
+
+        <Button
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/rectangle_button"
+            android:textColor="@color/white"
+            android:text="Request Submit"
+            android:textSize="@dimen/_14sdp"
+            android:textAllCaps="false"
+            android:id="@+id/btnSubmit"/>
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

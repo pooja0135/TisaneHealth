@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".recharge_pay_bill.RechargeHistoryActivity">
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:rotation="180"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_arrow_right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_14sdp"
+            android:text="Recharge History"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"/>
+
+
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rvRechargeHistory"
+      android:layout_margin="@dimen/_5sdp"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvNoDataFound"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="No Data Found"
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+</LinearLayout>

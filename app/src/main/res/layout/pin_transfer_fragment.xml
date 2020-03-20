@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/grey_600"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Pin Type"
+                    android:textAllCaps="false"/>
+                <Spinner
+                    android:id="@+id/spinnerPin"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="50"
+                    android:inputType="text"
+                    />
+                <View
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:background="@color/grey_600"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/grey_600"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Available no of pins"
+                    android:textAllCaps="false"/>
+                <EditText
+                    android:focusable="false"
+                    android:id="@+id/etAvailablePin"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="match_parent"
+                    android:hint=""
+                    android:inputType="text"
+                    android:textSize="@dimen/_12sdp"
+                    />
+                <View
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:background="@color/grey_600"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/grey_600"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Enter Transfer to ID"
+                    android:textAllCaps="false"/>
+                <EditText
+                    android:id="@+id/etTransferID"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="match_parent"
+                    android:hint=""
+                    android:inputType="text"
+                    android:textSize="@dimen/_12sdp"
+                    />
+                <View
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_600"/>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/tvInvalidData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Invalid Member ID or This Member Id Is Blocked."
+                    android:textSize="@dimen/_11sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:textColor="@color/red_700"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/grey_600"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:text="Transfer No of Pins"
+                    android:textAllCaps="false"/>
+                <EditText
+                    android:id="@+id/etTransferPin"
+                    android:background="@null"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="match_parent"
+                    android:hint="Enter no of pin"
+                    android:inputType="number"
+                    android:textSize="@dimen/_12sdp"
+                    />
+                <View
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:background="@color/grey_600"/>
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/registration_background"
+                android:text="Pin Transfer"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

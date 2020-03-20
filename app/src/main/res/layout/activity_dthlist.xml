@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+    <RelativeLayout
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+        <RelativeLayout
+            android:id="@+id/rlBack"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp">
+            <ImageView
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="match_parent"
+                android:rotation="180"
+                app:srcCompat="@drawable/ic_arrow_right"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DTH Recharge"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_marginBottom="@dimen/_150sdp"
+                android:id="@+id/linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.tisanehealth.Helper.MovingViewPager
+                    android:id="@+id/viewpagerDTH"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp" />
+
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvDthname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Airtel Digital TV"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_20sdp"/>
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:src="@drawable/airtel_dth"/>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_margin="@dimen/_15sdp"
+                    android:background="@drawable/rectangle_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp">
+                    <EditText
+                        android:id="@+id/etCustomerID"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:hint="Customer ID"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+
+                        />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:background="@drawable/rectangle_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp">
+                    <EditText
+                        android:id="@+id/etAmount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:hint="\u20B9 Amount"
+                        android:textSize="@dimen/_12sdp"
+                        android:inputType="number"
+                        android:textColor="@color/black"
+                        />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Plans"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll"
+                android:layout_marginBottom="@dimen/_50sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp">
+                <ImageView
+                    android:padding="@dimen/_minus10sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:buttonTint="@color/colorAccent"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    app:srcCompat="@drawable/ic_check_box"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="@dimen/_25sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            app:srcCompat="@drawable/ic_double_arrow"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fast Forward"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/_12sdp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:text="Instant payment from your No2Cash wallet"
+                        android:textColor="@color/grey_500"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnProceed"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorAccent"
+                android:layout_margin="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:text="Proceed to Recharge"
+                android:textSize="@dimen/_14sdp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
