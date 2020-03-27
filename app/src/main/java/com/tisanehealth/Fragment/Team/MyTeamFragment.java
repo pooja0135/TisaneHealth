@@ -472,7 +472,7 @@ public class MyTeamFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-         Log.v("hfghghghghgh",jsonObject.toString());
+         //Log.v("hfghghghghgh",jsonObject.toString());
 
         AndroidNetworking.post(BaseUrl+GetMyTeam)
                 .addJSONObjectBody(jsonObject)
@@ -484,7 +484,7 @@ public class MyTeamFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             teamlist.clear();
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             int active=0;
@@ -551,7 +551,7 @@ public class MyTeamFragment extends Fragment {
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

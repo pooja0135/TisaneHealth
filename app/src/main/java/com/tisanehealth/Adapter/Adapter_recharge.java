@@ -127,6 +127,18 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                         Toast.makeText(mContext, "Please update your bank details.", Toast.LENGTH_SHORT).show();
                     }
                 }
+                else if (position==8)
+                {
+
+                }
+                else if (position==8)
+                {
+
+                }
+                else if (position==8)
+                {
+
+                }
             }
         });
 

@@ -185,11 +185,11 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                   {
                     tvAmount.setVisibility(View.VISIBLE);
 
-                    Log.v("amountvalue","123456");
+                    //Log.v("amountvalue","123456");
                   }
                   else {
                     tvAmount.setVisibility(View.GONE);
-                    Log.v("amountvalue", "123");
+                    //Log.v("amountvalue", "123");
 
 
                     if (money_wallet >= Double.valueOf(etAmount.getText().toString())) {
@@ -372,7 +372,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -402,7 +402,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -434,7 +434,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -464,7 +464,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -508,7 +508,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("recharge_status3",response.toString());
+                            //Log.v("recharge_status3",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -551,7 +551,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -595,7 +595,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("recharge_status4",response.toString());
+                            //Log.v("recharge_status4",response.toString());
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
@@ -621,7 +621,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -630,7 +630,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
 
         String url="https://api.rechapi.com/recharge.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&mobile="+mobile+"&amount="+amount+"&opid="+operator_id+"&urid="+urid+"&opvalue1="+opvalue1+"&opvalue2="+opvalue2+"&opvalue3="+opvalue3;
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -641,7 +641,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject object) {
                         try {
 
-                            Log.v("recharge_status1",object.toString());
+                            //Log.v("recharge_status1",object.toString());
                             JSONObject response =object.getJSONObject("data");
                             String resCode=   response.getString("error_code");
                             String rech_mobile=response.getString("mobile");
@@ -721,7 +721,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
     public void RechargeStatusApi(final String id) {
         String url="https://api.rechapi.com/api_status.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&orderId="+id;
 
-        Log.v("recharge_status2",url);
+        //Log.v("recharge_status2",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -732,7 +732,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject object) {
                         try {
 
-                            Log.v("recharge_status2",object.toString());
+                            //Log.v("recharge_status2",object.toString());
 
                             JSONArray response =object.getJSONArray("data");
                             JSONObject jsonObject=response.getJSONObject(0);
@@ -821,7 +821,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -850,7 +850,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -881,7 +881,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -912,7 +912,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -930,8 +930,8 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
             jsonObject.put("PayStatus","Pending");
             jsonObject.put("ReqWallet",Amount);
 
-            Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
-            Log.v("hjfhjhfjhfjfhfhufh",BaseUrl+WalletRequestByUserPayment);
+            //Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
+            //Log.v("hjfhjhfjhfjfhfhufh",BaseUrl+WalletRequestByUserPayment);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -947,7 +947,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
@@ -975,7 +975,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -1005,7 +1005,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
             jsonObject.put("Amount", etAmount.getText().toString());
             jsonObject.put("MemberId", pref.get(AppSettings.UserId));
 
-            Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
+            //Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1021,7 +1021,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -1044,7 +1044,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -1089,7 +1089,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -1113,7 +1113,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -1128,7 +1128,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
             jsonObject.put("ReqWallet",ReqWallet);
             jsonObject.put("Member_Id",MemberId);
 
-            Log.v("recharge_status5",jsonObject.toString());
+            //Log.v("recharge_status5",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1144,7 +1144,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("recharge_status6",response.toString());
+                            //Log.v("recharge_status6",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -1167,7 +1167,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -1207,7 +1207,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
             preFill.put("contact", pref.get(AppSettings.UserMobile));
             options.put("prefill", preFill);
 
-            Log.v("amount_value",options.toString());
+            //Log.v("amount_value",options.toString());
             co.setImage(image);
             co.open(activity, options);
         } catch (Exception e) {
@@ -1215,7 +1215,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                     .show();
             e.printStackTrace();
 
-            Log.v("dkhkhgkhghuguguhdfuuduu",e.getMessage());
+            //Log.v("dkhkhgkhghuguguhdfuuduu",e.getMessage());
         }
     }
 
@@ -1228,11 +1228,11 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
         String email = data.getUserEmail();
 
 
-        Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",signature);
-        Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",contact);
-        Log.v("dkhkhgkhghuguguhdfuuduu",email);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",signature);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",contact);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",email);
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();
@@ -1259,11 +1259,11 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
         String email = data.getUserEmail();
 
 
-        Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",signature);
-        Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",contact);
-        Log.v("dkhkhgkhghuguguhdfuuduu",email);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",signature);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",contact);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",email);
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

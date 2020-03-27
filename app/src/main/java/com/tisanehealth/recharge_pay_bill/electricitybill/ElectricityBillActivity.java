@@ -106,7 +106,6 @@ public class ElectricityBillActivity extends AppCompatActivity {
 
 
         electricitylist= Utils.GetRechargeValue("Electricity");
-        Log.v("fhjfhfhjfhfhfhhf", String.valueOf(electricitylist.size()));
 
         adapter_electricity=new Adapter_electricity(this,electricitylist);
         recyclerviewElectricity.setLayoutManager(new LinearLayoutManager(this));

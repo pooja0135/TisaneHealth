@@ -214,7 +214,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         String url="https://api.rechapi.com/moneyTransfer/cusDetails.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&customerMobile="+customerMobile+"&demo="+"&version=1.1";
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -225,12 +225,12 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("gfgfgfgfhgfhghfghf",response.toString());
+                            //Log.v("gfgfgfgfhgfhghfghf",response.toString());
                             JSONObject jsonObject=response.getJSONObject("data");
 
                             String resCode=   jsonObject.getString("error_code");
 
-                            Log.v("gfgfgfgfhgfhghfghf",resCode);
+                            //Log.v("gfgfgfgfhgfhghfghf",resCode);
                             if (resCode.equals("123"))
                             {
                              resend_otp="1";
@@ -260,7 +260,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
                                   }
 
-                                  Log.v("banklist",banklist.toString());
+                                  //Log.v("banklist",banklist.toString());
 
 
                                 }
@@ -314,7 +314,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("gfgfgfgfhgfhghfghf", String.valueOf(response));
+                            //Log.v("gfgfgfgfhgfhghfghf", String.valueOf(response));
                             boolean status=   response.getBoolean("Status");
 
                             if (status)
@@ -363,7 +363,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         String url="https://api.rechapi.com/moneyTransfer/customerRegistration.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&customerName="+customerName+"&customerPincode="+customerPincode+"&customerMobile="+customerMobile+"&demo="+"&version=1.1";
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -378,7 +378,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
                             String resCode=   jsonObject.getString("error_code");
 
-                            Log.v("gfgfgfgfhgfhghfghf",resCode);
+                            //Log.v("gfgfgfgfhgfhghfghf",resCode);
                             if (resCode.equals("178"))
                             {
 
@@ -424,7 +424,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         String url="https://api.rechapi.com/moneyTransfer/customerVerify.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&customerMobile="+customerMobile+"&otp="+otp+"&demo="+"&version=1.1";
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -436,7 +436,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
                         try {
 
                             String resCode=   response.getString("error_code");
-                            Log.v("gfgfgfgfhgfhghfghf",resCode);
+                            //Log.v("gfgfgfgfhgfhghfghf",resCode);
                             if (resCode.equals("200"))
                             {
                                 AddBeneficiaryApi(pref.get(AppSettings.UserMobile),pref.get(AppSettings.PayeeName),pref.get(AppSettings.UserMobile),pref.get(AppSettings.BankAccountNumber),pref.get(AppSettings.BankIfsc));
@@ -465,7 +465,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         String url="https://api.rechapi.com/moneyTransfer/addBeneficiary.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&customerMobile="+customerMobile+"&beneficiaryName="+beneficiaryName+"&beneficiaryMobileNumber="+beneficiaryMobileNumber+"&beneficiaryAccountNumber="+beneficiaryAccountNumber+"&ifscCode="+ifscCode+"&demo="+"&version=1.1";
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -479,7 +479,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
                             JSONObject jsonObject=response.getJSONObject("data");
                             String resCode=   jsonObject.getString("error_code");
-                            Log.v("gfgfgfgfhgfhghfghf",resCode);
+                            //Log.v("gfgfgfgfhgfhghfghf",resCode);
                             if (resCode.equals("200"))
                             {
 
@@ -512,7 +512,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         String url="https://api.rechapi.com/moneyTransfer/beneficiaryVerifiy.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&customerMobile="+customerMobile+"&otp="+otp+"&beneficiaryId="+beneficiary_id+"&demo="+"&version=1.1";
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -526,7 +526,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
                             JSONObject jsonObject=response.getJSONObject("data");
 
                             String resCode=   jsonObject.getString("error_code");
-                            Log.v("gfgfgfgfhgfhghfghf",resCode);
+                            //Log.v("gfgfgfgfhgfhghfghf",resCode);
                             if (resCode.equals("200"))
                             {
 

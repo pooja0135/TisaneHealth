@@ -79,7 +79,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         String carrierName = manager.getNetworkOperatorName();
 
-        Log.v("carriername",carrierName);
+        //Log.v("carriername",carrierName);
 
         GetContactsIntoArrayList();
 
@@ -131,7 +131,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
                     Phonenumber.PhoneNumber swissNumberProto = phoneUtil.parse(phonenumber, "IN");
 
                     contactModel = new ContactModel(name, String.valueOf(swissNumberProto.getNationalNumber()));
-                    Log.v("fihihgihghghg",swissNumberProto.toString());
+                    //Log.v("fihihgihghghg",swissNumberProto.toString());
                 } catch (NumberParseException e) {
                     System.err.println("NumberParseException was thrown: " + e.toString());
                 }

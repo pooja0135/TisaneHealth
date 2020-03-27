@@ -238,7 +238,7 @@ public class BankWalletSummaryFragment extends Fragment implements View.OnClickL
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -293,7 +293,7 @@ public class BankWalletSummaryFragment extends Fragment implements View.OnClickL
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

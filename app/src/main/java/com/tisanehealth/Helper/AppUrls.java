@@ -38,7 +38,7 @@ public class AppUrls {
     public static  String GetMoneyWallet="GetMoneyWallet";
     public static  String GetNoOfPin="GetNoOfPin";
     public static  String ForgotTransPass="ForgotTransPass";
-    public static  String GetAllBankName="GetAllBankName";
+        public static  String GetAllBankName="GetAllBankName";
     public static  String getDepositType="getDepositType";
     public static  String SaveTermsConditionForFundRequest="SaveTermsConditionForFundRequest";
     public static  String FundRequest="FundRequest";
@@ -60,6 +60,7 @@ public class AppUrls {
     public static  String OrderStatusUpdate ="OrderStatusUpdate";
     public static  String WalletUpdateByUserPayment ="WalletUpdateByUserPayment";
     public static  String GetRechargeHistory ="GetRechargeHistory";
+    public static  String DailyTopUpDetail ="DailyTopUpDetail";
     public static  String GetMoneyTransferHistory ="GetMoneyTransferHistory";
     public static  String GetMoneyBalanceWallet ="GetMoneyBalanceWallet";
 

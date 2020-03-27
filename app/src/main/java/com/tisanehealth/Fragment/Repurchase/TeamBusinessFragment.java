@@ -390,7 +390,7 @@ public class TeamBusinessFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("hfghghghghgh",jsonObject.toString());
+        //Log.v("hfghghghghgh",jsonObject.toString());
 
         AndroidNetworking.post(BaseUrl+TeamRepurchase)
                 .addJSONObjectBody(jsonObject)
@@ -402,7 +402,7 @@ public class TeamBusinessFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
                             repurchaselist.clear();
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
 
@@ -452,7 +452,7 @@ public class TeamBusinessFragment extends Fragment {
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

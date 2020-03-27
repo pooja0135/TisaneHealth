@@ -295,7 +295,7 @@ public class PinTransferFragment extends Fragment{
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -345,7 +345,7 @@ public class PinTransferFragment extends Fragment{
 
                     @Override
                     public void onError(ANError error) {
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -374,7 +374,7 @@ public class PinTransferFragment extends Fragment{
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -409,7 +409,7 @@ public class PinTransferFragment extends Fragment{
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -439,7 +439,7 @@ public class PinTransferFragment extends Fragment{
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -474,7 +474,7 @@ public class PinTransferFragment extends Fragment{
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

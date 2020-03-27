@@ -267,7 +267,7 @@ public class RoiIncomeFragment extends Fragment implements View.OnClickListener 
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
 
                             String Message=   response.getString("Message");
 
@@ -318,7 +318,7 @@ public class RoiIncomeFragment extends Fragment implements View.OnClickListener 
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

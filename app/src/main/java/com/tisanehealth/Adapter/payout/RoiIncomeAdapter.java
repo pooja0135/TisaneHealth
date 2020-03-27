@@ -77,7 +77,7 @@ public class RoiIncomeAdapter extends RecyclerView.Adapter<RoiIncomeAdapter.MyVi
             date = originalFormat.parse(roiincomelist.get(position).getEntered_date());
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

@@ -32,7 +32,7 @@
 
         <androidx.cardview.widget.CardView
             app:cardElevation="@dimen/_10sdp"
-            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardCornerRadius="5dp"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_25sdp"

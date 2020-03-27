@@ -72,7 +72,7 @@ public class DirectIncomeAdapter extends RecyclerView.Adapter<DirectIncomeAdapte
             date = originalFormat.parse(directincomelist.get(position).getGenerate_date());
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

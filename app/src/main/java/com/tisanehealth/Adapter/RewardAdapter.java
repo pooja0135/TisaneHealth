@@ -76,7 +76,7 @@ public class RewardAdapter extends RecyclerView.Adapter<RewardAdapter.MyViewHold
 
 
 
-        Log.v("ggghghbbbbggjhjhj",rewardlist.get(position).get("QualifiedDate"));
+        //Log.v("ggghghbbbbggjhjhj",rewardlist.get(position).get("QualifiedDate"));
 
 
     }

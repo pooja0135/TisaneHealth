@@ -37,7 +37,6 @@ public class LandlineListActivity extends AppCompatActivity {
 
 
         landlinelist= Utils.GetRechargeValue("Landline");
-        Log.v("fhjfhfhjfhfhfhhf", String.valueOf(landlinelist.size()));
 
 
         adapter_landline=new Adapter_landline(this,landlinelist);

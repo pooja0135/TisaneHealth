@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -70,7 +70,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -101,7 +101,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -132,7 +132,7 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -164,7 +164,7 @@
 
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"
@@ -196,7 +196,7 @@
 
     <androidx.cardview.widget.CardView
         android:elevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_marginTop="@dimen/_10sdp"
         app:cardBackgroundColor="@color/lightcream"
         android:layout_width="match_parent"

@@ -225,7 +225,7 @@ public class BankDetailFragment extends Fragment implements View.OnClickListener
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
+        //Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
         AndroidNetworking.post(BaseUrl+UpdateBank)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
@@ -261,7 +261,7 @@ public class BankDetailFragment extends Fragment implements View.OnClickListener
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

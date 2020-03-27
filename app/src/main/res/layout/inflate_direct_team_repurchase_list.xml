@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardCornerRadius="5dp"
         android:layout_margin="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -124,7 +124,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="@dimen/_10sdp"
-        app:cardCornerRadius="@dimen/_3sdp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="@dimen/_10sdp"
         app:cardBackgroundColor="@color/grey_100"
         android:visibility="gone"

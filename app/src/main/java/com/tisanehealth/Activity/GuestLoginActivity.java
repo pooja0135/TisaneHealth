@@ -176,7 +176,7 @@ public class GuestLoginActivity extends AppCompatActivity implements View.OnClic
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

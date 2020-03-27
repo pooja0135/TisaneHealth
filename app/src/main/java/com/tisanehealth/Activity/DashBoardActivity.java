@@ -335,14 +335,14 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onFailure(Exception e) {
               //  Toast.makeText(DashBoardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                Log.v("ghgghghghghghhg",e.toString());
+                //Log.v("ghgghghghghghhg",e.toString());
             }
         });
 
         appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo appUpdateInfo) {
-           //     Log.v("ghgghghghghghhg","434444444");
+           //     //Log.v("ghgghghghghghhg","434444444");
 
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
 
@@ -353,7 +353,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(DashBoardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                  //      Log.v("ghgghghghghghhg",e.toString());
+                  //      //Log.v("ghgghghghghghhg",e.toString());
                     }
                 }
             }
@@ -446,7 +446,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                     Phonenumber.PhoneNumber swissNumberProto = phoneUtil.parse(phonenumber, "IN");
 
                     contactModel = new ContactModel(name, String.valueOf(swissNumberProto.getNationalNumber()));
-                    Log.v("fihihgihghghg",swissNumberProto.toString());
+                    //Log.v("fihihgihghghg",swissNumberProto.toString());
                 } catch (NumberParseException e) {
                     System.err.println("NumberParseException was thrown: " + e.toString());
                 }
@@ -513,7 +513,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         if (context != null && permissions != null) {
             for (String permission : permissions) {
 
-                Log.v("permissionvalue", permission);
+                //Log.v("permissionvalue", permission);
 
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                     return false;

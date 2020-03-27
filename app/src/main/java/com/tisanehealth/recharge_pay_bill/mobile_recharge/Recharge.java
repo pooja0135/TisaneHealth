@@ -26,7 +26,13 @@ public class Recharge extends AppCompatActivity {
             R.drawable.ic_datacard,
             R.drawable.ic_insurance,
             R.drawable.ic_broadband,
-            R.drawable.ic_money_transfer};
+            R.drawable.ic_money_transfer,
+            R.drawable.wallet,
+            R.drawable.ic_history,
+            R.drawable.ic_money_transfer
+
+
+    };
 
     ImageView ivBack;
     RecyclerView recyclerviewDashboard;
@@ -66,6 +72,15 @@ public class Recharge extends AppCompatActivity {
         rechargelist.add(a);
 
         a = new RechargeModel( "Money Transfer", covers[7]);
+        rechargelist.add(a);
+
+        a = new RechargeModel( "Wallet", covers[8]);
+        rechargelist.add(a);
+
+        a = new RechargeModel( "Recharge History", covers[9]);
+        rechargelist.add(a);
+
+        a = new RechargeModel( "Deal with us", covers[10]);
         rechargelist.add(a);
 
 

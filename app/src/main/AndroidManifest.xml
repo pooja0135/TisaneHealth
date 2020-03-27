@@ -3,6 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tisanehealth">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -12,8 +22,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".recharge_pay_bill.money_transfer.MoneyTransferHistoryActivity"></activity>
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        >
+        <activity android:name=".Activity.DailyBusinessReport"></activity>
+        <activity android:name=".recharge_pay_bill.money_transfer.MoneyTransferHistoryActivity" />
         <activity android:name=".recharge_pay_bill.RechargeHistoryActivity" />
         <activity
             android:name=".Activity.GuestLoginActivity"
@@ -121,9 +134,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Fragment.Team.GraphActivity"/>
-        <activity android:name=".Fragment.Team.BuchheimWalkerActivity"/>
+        <activity android:name=".Fragment.Team.GraphActivity" />
+        <activity android:name=".Fragment.Team.BuchheimWalkerActivity" />
 
         <meta-data
             android:name="com.razorpay.ApiKey"
@@ -139,17 +151,5 @@
                 android:resource="@xml/filepaths" />
         </provider>
     </application>
-
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-
 
 </manifest>

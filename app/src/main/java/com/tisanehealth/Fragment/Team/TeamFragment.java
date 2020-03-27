@@ -2,14 +2,17 @@ package com.tisanehealth.Fragment.Team;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.tisanehealth.Activity.DailyBusinessReport;
 import com.tisanehealth.Fragment.DashBoardFragment;
 import com.tisanehealth.R;
 
@@ -19,7 +22,8 @@ import static com.tisanehealth.Activity.DashBoardActivity.tvHeader;
 
 public class TeamFragment extends Fragment implements View.OnClickListener {
 
-   LinearLayout llDirectTeam,llTeam,llTree;
+    LinearLayout llDirectTeam, llTeam, llTree, llDailyBusinessReport;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,13 +34,15 @@ public class TeamFragment extends Fragment implements View.OnClickListener {
         ivLogo.setVisibility(View.GONE);
         tvHeader.setVisibility(View.VISIBLE);
 
-        llDirectTeam      =view.findViewById(R.id.llDirectTeam);
-        llTeam            =view.findViewById(R.id.llTeam);
-        llTree            =view.findViewById(R.id.llTree);
+        llDirectTeam = view.findViewById(R.id.llDirectTeam);
+        llTeam = view.findViewById(R.id.llTeam);
+        llTree = view.findViewById(R.id.llTree);
+        llDailyBusinessReport = view.findViewById(R.id.llDailyBusinessReport);
 
         llTeam.setOnClickListener(this);
         llDirectTeam.setOnClickListener(this);
         llTree.setOnClickListener(this);
+        llDailyBusinessReport.setOnClickListener(this);
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
@@ -45,7 +51,7 @@ public class TeamFragment extends Fragment implements View.OnClickListener {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        loadFragment(new DashBoardFragment(),"");
+                        loadFragment(new DashBoardFragment(), "");
                         return true;
                     }
                 }
@@ -59,23 +65,27 @@ public class TeamFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.llTeam:
-                loadFragment(new MyTeamFragment(),"");
+                loadFragment(new MyTeamFragment(), "");
                 break;
             case R.id.llDirectTeam:
-                loadFragment(new DirectTeamFragment(),"");
+                loadFragment(new DirectTeamFragment(), "");
                 break;
-                case R.id.llTree:
-               // loadFragment(new TreeviewFragment(),"");
-                startActivity(new Intent(getActivity(),BuchheimWalkerActivity.class));
+            case R.id.llTree:
+                // loadFragment(new TreeviewFragment(),"");
+                startActivity(new Intent(getActivity(), BuchheimWalkerActivity.class));
+                break;
+
+            case R.id.llDailyBusinessReport:
+                // loadFragment(new TreeviewFragment(),"");
+                startActivity(new Intent(getActivity(), DailyBusinessReport.class));
                 break;
         }
     }
 
 
-    public void loadFragment(Fragment fragment,String type) {
+    public void loadFragment(Fragment fragment, String type) {
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
         fragment.setArguments(bundle);

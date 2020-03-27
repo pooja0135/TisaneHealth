@@ -77,7 +77,7 @@ public class LeaderIncomeAdapter extends RecyclerView.Adapter<LeaderIncomeAdapte
             date = originalFormat.parse(directincomelist.get(position).getPaidDate());
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

@@ -298,7 +298,7 @@ public class AddAssociateNomineeFragment extends Fragment implements View.OnClic
         }
 
 
-        Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
+        //Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
         AndroidNetworking.post(BaseUrl+MemberRegistration)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
@@ -329,7 +329,7 @@ public class AddAssociateNomineeFragment extends Fragment implements View.OnClic
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

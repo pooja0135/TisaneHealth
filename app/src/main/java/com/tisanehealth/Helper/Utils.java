@@ -356,7 +356,7 @@ public class Utils {
 
 
 
-		Log.v("trttrttrtrtr",new Gson().toJson(rechargeTypeModelArrayList));
+		//Log.v("trttrttrtrtr",new Gson().toJson(rechargeTypeModelArrayList));
 		for (int i=0;i<rechargeTypeModelArrayList.size();i++)
 		{
 		RechargeTypeModel rechargeTypeModel = rechargeTypeModelArrayList.get(i);
@@ -1090,7 +1090,7 @@ public class Utils {
 			calendar.add(Calendar.MILLISECOND, toTimeZone.getDSTSavings());
 		}
 
-		Log.v("time log", calendar.getTime() + "");
+		//Log.v("time log", calendar.getTime() + "");
 	}
 
 	// =============================================

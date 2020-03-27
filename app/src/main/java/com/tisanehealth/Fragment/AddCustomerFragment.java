@@ -351,7 +351,7 @@ public class AddCustomerFragment extends Fragment implements View.OnClickListene
         }
 
 
-        Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
+        //Log.v("jyiujojjujujujujuujujuj",jsonObject.toString());
         AndroidNetworking.post(BaseUrl+MemberRegistration)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
@@ -362,7 +362,7 @@ public class AddCustomerFragment extends Fragment implements View.OnClickListene
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hgghghghghhghg",response.toString());
+                            //Log.v("hgghghghghhghg",response.toString());
 
                             String Status=   response.getString("Status");
 
@@ -385,7 +385,7 @@ public class AddCustomerFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

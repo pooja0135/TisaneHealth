@@ -82,7 +82,7 @@ public class Adapter_money_transfer_history extends RecyclerView.Adapter<Adapter
             date = originalFormat.parse(rechargehistorylist.get(position).get("EntryDate"));
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

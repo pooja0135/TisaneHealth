@@ -16,7 +16,7 @@
             android:orientation="vertical">
             <androidx.cardview.widget.CardView
                 android:elevation="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardCornerRadius="5dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardBackgroundColor="@color/lightcream"
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:elevation="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardCornerRadius="5dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardBackgroundColor="@color/lightcream"
                 android:layout_width="match_parent"
@@ -79,7 +79,7 @@
 
             <androidx.cardview.widget.CardView
                 android:elevation="@dimen/_5sdp"
-                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardCornerRadius="5dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 app:cardBackgroundColor="@color/lightcream"
                 android:layout_width="match_parent"
@@ -102,6 +102,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tree"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:elevation="@dimen/_5sdp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@color/lightcream"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/llDailyBusinessReport"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:srcCompat="@drawable/ic_group"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily Business Report"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp"
                         android:layout_gravity="center_vertical"/>

@@ -161,7 +161,7 @@ public class Adapter_rechargehistory extends RecyclerView.Adapter<Adapter_rechar
             date = originalFormat.parse(rechargehistorylist.get(position).get("Entrydate"));
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

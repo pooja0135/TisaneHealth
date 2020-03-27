@@ -211,7 +211,7 @@ public class RewardFragment extends Fragment {
             jsonObject.put("FromDate",FromDate);
             jsonObject.put("ToDate",ToDate);
 
-            Log.v("yearvalues",jsonObject.toString());
+            //Log.v("yearvalues",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -227,7 +227,7 @@ public class RewardFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             rewardlist.clear();
@@ -362,7 +362,7 @@ public class RewardFragment extends Fragment {
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -418,7 +418,7 @@ public class RewardFragment extends Fragment {
         public void onBindViewHolder(final RewardAdapter.MyViewHolder holder, int position) {
 
 
-            Log.v("leftbusiness", String.valueOf(Double.valueOf(teamlist.get(position).get("LeftBussiness")+2).longValue()));
+            //Log.v("leftbusiness", String.valueOf(Double.valueOf(teamlist.get(position).get("LeftBussiness")+2).longValue()));
 
 
             holder.tvLeftunit.setText("\u20B9 " + String.valueOf(roundTwoDecimals(Double.parseDouble(teamlist.get(position).get("LeftUnit")))));

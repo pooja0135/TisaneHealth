@@ -99,7 +99,7 @@ public class MoneyTransferHistoryActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             boolean Status=   response.getBoolean("Status");
 
                             if (Status)
@@ -144,7 +144,7 @@ public class MoneyTransferHistoryActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

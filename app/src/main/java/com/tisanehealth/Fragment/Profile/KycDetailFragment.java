@@ -558,7 +558,7 @@ public class KycDetailFragment extends Fragment implements View.OnClickListener 
                         String serverResponseMessage = conn
                                 .getResponseMessage();
 
-                        Log.v("ff123333333", String.valueOf(serverResponseMessage));
+                        //Log.v("ff123333333", String.valueOf(serverResponseMessage));
                         if (serverResponseCode == 200) {
 
 
@@ -599,7 +599,7 @@ public class KycDetailFragment extends Fragment implements View.OnClickListener 
 
         @Override
         protected void onPostExecute(String result) {
-            Log.v("ff123333333",result);
+            //Log.v("ff123333333",result);
             loader.cancel();
         }
 
@@ -686,7 +686,7 @@ public class KycDetailFragment extends Fragment implements View.OnClickListener 
                         String serverResponseMessage = conn
                                 .getResponseMessage();
 
-                        Log.v("ff123333333", String.valueOf(serverResponseMessage));
+                        //Log.v("ff123333333", String.valueOf(serverResponseMessage));
                         if (serverResponseCode == 200) {
 
 
@@ -727,7 +727,7 @@ public class KycDetailFragment extends Fragment implements View.OnClickListener 
 
         @Override
         protected void onPostExecute(String result) {
-            Log.v("ff123333333",result);
+            //Log.v("ff123333333",result);
             loader.cancel();
         }
 

@@ -38,7 +38,6 @@ public class InsuranceListActivity extends AppCompatActivity {
         ivBack=findViewById(R.id.ivBack);
         rvInsurance=findViewById(R.id.rvInsurance);
         insurancelist= Utils.GetRechargeValue("Insurance");
-        Log.v("fhjfhfhjfhfhfhhf", String.valueOf(insurancelist.size()));
 
         adapter_insurance=new Adapter_insurance(this,insurancelist);
         rvInsurance.setLayoutManager(new LinearLayoutManager(this));

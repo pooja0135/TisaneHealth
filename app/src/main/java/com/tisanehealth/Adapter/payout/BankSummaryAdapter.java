@@ -162,7 +162,7 @@ public class BankSummaryAdapter extends RecyclerView.Adapter<BankSummaryAdapter.
             date = originalFormat.parse(banksummarylist.get(position).getGenerate_date());
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

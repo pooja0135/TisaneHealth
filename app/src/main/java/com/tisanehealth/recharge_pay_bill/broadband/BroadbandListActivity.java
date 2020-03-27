@@ -35,7 +35,6 @@ public class BroadbandListActivity extends AppCompatActivity {
         ivBack=findViewById(R.id.ivBack);
         rvBroadband=findViewById(R.id.rvBroadband);
         broadbandlist= Utils.GetRechargeValue("Broadband");
-        Log.v("fhjfhfhjfhfhfhhf", String.valueOf(broadbandlist.size()));
 
         adapter_broadband=new Adapter_broadband(this,broadbandlist);
         rvBroadband.setLayoutManager(new LinearLayoutManager(this));

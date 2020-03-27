@@ -252,7 +252,7 @@ public class MatchingIncomeFragment extends Fragment implements View.OnClickList
             jsonObject.put("FromDate",fromDate);
             jsonObject.put("ToDate",toDate);
 
-            Log.v("fkfkfkfkfjf",jsonObject.toString());
+            //Log.v("fkfkfkfkfjf",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -268,7 +268,7 @@ public class MatchingIncomeFragment extends Fragment implements View.OnClickList
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             matchincomelist.clear();
@@ -321,7 +321,7 @@ public class MatchingIncomeFragment extends Fragment implements View.OnClickList
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

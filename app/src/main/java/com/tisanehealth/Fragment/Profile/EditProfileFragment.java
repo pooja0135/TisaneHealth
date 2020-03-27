@@ -289,7 +289,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             jsonObject.put("TransPassword","");
 
 
-            Log.v("jkhfhgjjhggghhg",jsonObject.toString());
+            //Log.v("jkhfhgjjhggghhg",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -324,7 +324,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -338,7 +338,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             jsonObject.put("PinCode",etZipcode.getText().toString());
 
 
-            Log.v("jkhfhgjjhggghhg",jsonObject.toString());
+            //Log.v("jkhfhgjjhggghhg",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -380,7 +380,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

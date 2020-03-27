@@ -30,7 +30,7 @@ public class CustomPagerAdapter extends PagerAdapter {
 
         TextView tvNews=itemView.findViewById(R.id.tvNews);
 
-        Log.v("fgnjghjghjghgjh", String.valueOf(newslist.get(position)));
+        //Log.v("fgnjghjghjghgjh", String.valueOf(newslist.get(position)));
         tvNews.setText(newslist.get(position));
 
 

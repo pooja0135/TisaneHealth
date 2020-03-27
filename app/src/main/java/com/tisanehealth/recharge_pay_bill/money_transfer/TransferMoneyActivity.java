@@ -102,7 +102,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
 
         items = (ArrayList<HashMap<String,String>>)getIntent().getSerializableExtra("bank_detail");
 
-       Log.v("fjhffhjfhjfhfhjf", String.valueOf(items.size()));
+       //Log.v("fjhffhjfhjfhfhjf", String.valueOf(items.size()));
 
         etBankAccountNumber.setText(items.get(0).get("beneficiaryAccountNumber"));
         etIFSc.setText(items.get(0).get("ifscCode"));
@@ -229,7 +229,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -259,7 +259,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -275,7 +275,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
             jsonObject.put("beneficiaryId",beneficiary_id);
             jsonObject.put("amount",amount);
 
-            Log.v("gfgfgfgfhgfhghfghf",jsonObject.toString());
+            //Log.v("gfgfgfgfhgfhghfghf",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -292,7 +292,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("gfgfgfgfhgfhghfghf",response.toString());
+                            //Log.v("gfgfgfgfhgfhghfghf",response.toString());
 
 
                             boolean status=   response.getBoolean("Status");

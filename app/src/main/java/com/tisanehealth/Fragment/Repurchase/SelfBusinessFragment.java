@@ -401,7 +401,7 @@ public class SelfBusinessFragment extends Fragment implements View.OnClickListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.v("hfghghghghgh",jsonObject.toString());
+        //Log.v("hfghghghghgh",jsonObject.toString());
 
         AndroidNetworking.post(BaseUrl+SelfRepurchase)
                 .addJSONObjectBody(jsonObject)
@@ -413,7 +413,7 @@ public class SelfBusinessFragment extends Fragment implements View.OnClickListen
                     public void onResponse(JSONObject response) {
                         try {
                             repurchaselist.clear();
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
 
@@ -465,7 +465,7 @@ public class SelfBusinessFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -549,11 +549,11 @@ public class SelfBusinessFragment extends Fragment implements View.OnClickListen
                  total_cgst=total_cgst+Double.parseDouble(stringArray1[5]);
                  total_amount=total_amount+Double.parseDouble(stringArray1[6]);
                  total_bv=total_bv+Double.parseDouble(stringArray1[7]);
-                    Log.v("value1234", String.valueOf(total_value));
+                    //Log.v("value1234", String.valueOf(total_value));
                 }
                 catch(Exception e)
                 {
-                    Log.v("gfgfggggggggg",e.toString());
+                    //Log.v("gfgfggggggggg",e.toString());
                 }
 
 

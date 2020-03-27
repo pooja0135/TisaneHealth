@@ -138,7 +138,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -166,7 +166,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -198,7 +198,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -229,7 +229,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -248,8 +248,8 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
             jsonObject.put("PayStatus","Pending");
             jsonObject.put("ReqWallet",Amount);
 
-            Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
-            Log.v("hjfhjhfjhfjfhfhufh",BaseUrl+WalletRequestByUserPayment);
+            //Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
+            //Log.v("hjfhjhfjhfjfhfhufh",BaseUrl+WalletRequestByUserPayment);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -265,7 +265,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
@@ -293,7 +293,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -324,7 +324,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
             jsonObject.put("Amount", etAmount.getText().toString());
             jsonObject.put("MemberId", pref.get(AppSettings.UserId));
 
-            Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
+            //Log.v("hjfhjhfjhfjfhfhufh",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -340,7 +340,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -363,7 +363,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -409,7 +409,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("hjfhjhfjhfjfhfhufh",response.toString());
+                            //Log.v("hjfhjhfjhfjfhfhufh",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -433,7 +433,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -449,7 +449,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
             jsonObject.put("ReqWallet",ReqWallet);
             jsonObject.put("Member_Id",MemberId);
 
-           Log.v("recharge_status5",jsonObject.toString());
+           //Log.v("recharge_status5",jsonObject.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -465,7 +465,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("recharge_status6",response.toString());
+                            //Log.v("recharge_status6",response.toString());
 
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
@@ -488,7 +488,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -533,7 +533,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
                     .show();
             e.printStackTrace();
 
-            Log.v("dkhkhgkhghuguguhdfuuduu",e.getMessage());
+            //Log.v("dkhkhgkhghuguguhdfuuduu",e.getMessage());
         }
     }
 
@@ -546,11 +546,11 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
         String email = data.getUserEmail();
 
 
-        Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",signature);
-        Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",contact);
-        Log.v("dkhkhgkhghuguguhdfuuduu",email);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",signature);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",contact);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",email);
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();
@@ -577,11 +577,11 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
         String email = data.getUserEmail();
 
 
-        Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",signature);
-        Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
-        Log.v("dkhkhgkhghuguguhdfuuduu",contact);
-        Log.v("dkhkhgkhghuguguhdfuuduu",email);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",paymentId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",signature);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",orderId);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",contact);
+        //Log.v("dkhkhgkhghuguguhdfuuduu",email);
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

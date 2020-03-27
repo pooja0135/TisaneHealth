@@ -20,7 +20,7 @@
 
             <androidx.cardview.widget.CardView
                 app:cardBackgroundColor="@color/lightcream"
-                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardCornerRadius="5dp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"

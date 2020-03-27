@@ -60,7 +60,7 @@ public class PinTransferHistoryAdapter extends RecyclerView.Adapter<PinTransferH
             date = originalFormat.parse(transferlist.get(position).get("Date"));
         } catch (Exception e) {
 
-            Log.v("hhhhhhhhhhhhh",e.toString());
+            //Log.v("hhhhhhhhhhhhh",e.toString());
             e.printStackTrace();
         }
         String formattedDate = targetFormat.format(date);

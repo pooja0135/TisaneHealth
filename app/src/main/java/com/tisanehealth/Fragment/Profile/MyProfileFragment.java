@@ -573,7 +573,7 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -667,7 +667,7 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -748,7 +748,7 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
                         String serverResponseMessage = conn
                                 .getResponseMessage();
 
-                        Log.v("ff123333333", String.valueOf(serverResponseMessage));
+                        //Log.v("ff123333333", String.valueOf(serverResponseMessage));
                         if (serverResponseCode == 200) {
 
 
@@ -789,7 +789,7 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
 
         @Override
         protected void onPostExecute(String result) {
-            Log.v("ff123333333",result);
+            //Log.v("ff123333333",result);
             loader.cancel();
         }
 

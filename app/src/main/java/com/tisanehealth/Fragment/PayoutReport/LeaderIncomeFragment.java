@@ -271,7 +271,7 @@ public class LeaderIncomeFragment extends Fragment implements View.OnClickListen
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("ResponseMessage");
                             leaderincomelist.clear();
                             if (Message.equals("success"))
@@ -321,7 +321,7 @@ public class LeaderIncomeFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

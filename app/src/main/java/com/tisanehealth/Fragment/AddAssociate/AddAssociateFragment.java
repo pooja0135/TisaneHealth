@@ -313,7 +313,7 @@ public class AddAssociateFragment extends Fragment implements View.OnClickListen
             jsonObject.put("ZipCode", "");
 
 
-            Log.v("hgjhghgjhhgghgh",jsonObject.toString());
+            //Log.v("hgjhghgjhhgghgh",jsonObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -348,7 +348,7 @@ public class AddAssociateFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -377,7 +377,7 @@ public class AddAssociateFragment extends Fragment implements View.OnClickListen
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -414,7 +414,7 @@ public class AddAssociateFragment extends Fragment implements View.OnClickListen
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

@@ -267,7 +267,7 @@ public class DashBoardFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -441,8 +441,8 @@ public class DashBoardFragment extends Fragment {
                                     map.put("RewardAmount",jsonObject.getString("RewardAmount"));
                                     rewardlist.add(map);
 
-                                    Log.v("jbjbjbjbjbbfjhfh", String.valueOf(rewardlist.size()));
-                                    Log.v("jbjbjbjbjbbfjhfh",jsonObject.toString());
+                                    //Log.v("jbjbjbjbjbbfjhfh", String.valueOf(rewardlist.size()));
+                                    //Log.v("jbjbjbjbjbbfjhfh",jsonObject.toString());
                                 }
 
 
@@ -471,14 +471,14 @@ public class DashBoardFragment extends Fragment {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.v("gjfihhgghghg",e.toString());
+                            //Log.v("gjfihhgghghg",e.toString());
                         }
                     }
 
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });
@@ -507,7 +507,7 @@ public class DashBoardFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("jyiujojjujujujujuujujuj",response.toString());
+                            //Log.v("jyiujojjujujujujuujujuj",response.toString());
                             String Message=   response.getString("Message");
 
                             if (Message.equals("Success"))
@@ -562,7 +562,7 @@ public class DashBoardFragment extends Fragment {
                     @Override
                     public void onError(ANError error) {
 
-                        Log.v("gjfihhgghghg",error.toString());
+                        //Log.v("gjfihhgghghg",error.toString());
                         loader.cancel();
                     }
                 });

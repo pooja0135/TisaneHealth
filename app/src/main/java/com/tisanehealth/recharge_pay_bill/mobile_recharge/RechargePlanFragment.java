@@ -84,7 +84,7 @@ public class RechargePlanFragment extends Fragment {
 
          bundle=getArguments();
 
-     //   Log.v("gfgfgfgfhgfhghfghf",bundle.getString("someTitle"));
+     //   //Log.v("gfgfgfgfhgfhghfghf",bundle.getString("someTitle"));
 
         AndroidNetworking.initialize(getActivity(), myUnsafeHttpClient());
 
@@ -106,7 +106,7 @@ public class RechargePlanFragment extends Fragment {
         rechargelist.clear();
         String url="https://api.rechapi.com/rech_plan.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&type="+type+"&cirid="+circle_id+"&opid="+operator_id;
 
-        Log.v("gfgfgfgfhgfhghfghf",url);
+        //Log.v("gfgfgfgfhgfhghfghf",url);
 
         AndroidNetworking.post(url)
                 .setPriority(Priority.MEDIUM)
@@ -117,7 +117,7 @@ public class RechargePlanFragment extends Fragment {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("gfgfgfgfhgfhghfghf",response.toString());
+                            //Log.v("gfgfgfgfhgfhghfghf",response.toString());
                             String resCode=   response.getString("resCode");
                             if (resCode.equals("200"))
                             {
@@ -198,13 +198,13 @@ public class RechargePlanFragment extends Fragment {
                         } catch (JSONException e) {
                             e.printStackTrace();
 
-                            Log.v("gfgfgfgfhgfhghfghf",e.toString());
+                            //Log.v("gfgfgfgfhgfhghfghf",e.toString());
                         }
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        Log.v("gfgfgfgfhgfhghfghf",anError.toString());
+                        //Log.v("gfgfgfgfhgfhghfghf",anError.toString());
                     }
 
 

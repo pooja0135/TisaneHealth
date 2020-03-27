@@ -248,17 +248,18 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:layout_alignParentBottom="true"
-                        android:layout_below="@+id/linearlayout1"
-                        android:background="@color/colorAccent"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:id="@+id/btnProceed"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
+                        android:layout_below="@+id/linearlayout1"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="261dp"
+                        android:layout_marginBottom="1dp"
+                        android:background="@color/colorAccent"
                         android:text="Proceed to Recharge"
-                        android:textSize="@dimen/_14sdp"
                         android:textAllCaps="false"
-                        android:id="@+id/btnProceed"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14sdp" />
 
                     <LinearLayout
                         android:visibility="gone"
