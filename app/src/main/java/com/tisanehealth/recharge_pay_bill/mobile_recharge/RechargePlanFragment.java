@@ -86,7 +86,7 @@ public class RechargePlanFragment extends Fragment {
 
      //   //Log.v("gfgfgfgfhgfhghfghf",bundle.getString("someTitle"));
 
-        AndroidNetworking.initialize(getActivity(), myUnsafeHttpClient());
+        //AndroidNetworking.initializegetActivity(), myUnsafeHttpClient());
 
         RechargeApi(bundle.getString("someTitle"),RechargeActivity.circle_id,RechargeActivity.operator_id);
 

@@ -93,7 +93,7 @@ public class MoneyTransferActivity extends AppCompatActivity implements View.OnC
 
         tvMobile.setText(pref.get(AppSettings.UserMobile));
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
         //setonClickListener
         ivBack.setOnClickListener(this);
         btnSend.setOnClickListener(this);

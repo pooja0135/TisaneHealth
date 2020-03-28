@@ -167,7 +167,7 @@ public class BroadbandPayActivity  extends AppCompatActivity implements View.OnC
         ivBack.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

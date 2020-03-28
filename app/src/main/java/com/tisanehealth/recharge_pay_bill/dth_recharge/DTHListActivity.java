@@ -140,7 +140,7 @@ public class DTHListActivity extends AppCompatActivity implements View.OnClickLi
         rlBack.setOnClickListener(this);
         btnProceed.setOnClickListener(this);
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
 
         if (Utils.isNetworkConnectedMainThred(this)) {

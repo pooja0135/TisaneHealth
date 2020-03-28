@@ -53,7 +53,7 @@ public class SplashActivity extends AppCompatActivity {
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY); // simply enable logging
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.HEADERS);
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BASIC);
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         //ImageView
         ivLogo = findViewById(R.id.ivLogo);

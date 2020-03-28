@@ -57,7 +57,7 @@ public class MoneyTransferHistoryActivity extends AppCompatActivity {
 
         rvMoneyTransferHistory.setLayoutManager(new LinearLayoutManager(this));
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();
             loader.setCanceledOnTouchOutside(true);

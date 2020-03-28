@@ -252,7 +252,7 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
         btnProceed.setOnClickListener(this);
 
 
-        //AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        ////AndroidNetworking.initializethis, myUnsafeHttpClient());
 
 
         if (Utils.isNetworkConnectedMainThred(this)) {

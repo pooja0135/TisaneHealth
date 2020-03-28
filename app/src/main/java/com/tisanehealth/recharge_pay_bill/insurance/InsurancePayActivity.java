@@ -168,7 +168,7 @@ public class InsurancePayActivity  extends AppCompatActivity   implements View.O
         btnConfirm.setOnClickListener(this);
         ivBack.setOnClickListener(this);
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

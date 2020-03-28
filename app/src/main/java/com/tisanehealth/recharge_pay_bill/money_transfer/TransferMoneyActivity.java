@@ -69,7 +69,7 @@ public class TransferMoneyActivity extends AppCompatActivity  implements View.On
         pref                     =new Preferences(this);
         loader                   =new CustomLoader(this,android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(TransferMoneyActivity.this)) {
             loader.show();

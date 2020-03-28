@@ -70,7 +70,7 @@ public class AddMoneyToWalletActivity extends AppCompatActivity implements View.
         ivBack.setOnClickListener(this);
         btnAddMoney.setOnClickListener(this);
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

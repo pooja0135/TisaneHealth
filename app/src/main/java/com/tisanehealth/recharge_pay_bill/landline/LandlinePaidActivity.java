@@ -160,7 +160,7 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
         //Create dynamic form
         addEditTexts();
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();

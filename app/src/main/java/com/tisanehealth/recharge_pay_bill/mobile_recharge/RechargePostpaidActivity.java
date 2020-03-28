@@ -240,7 +240,7 @@ public class RechargePostpaidActivity extends AppCompatActivity implements View.
         ivBack.setOnClickListener(this);
 
 
-        AndroidNetworking.initialize(this, myUnsafeHttpClient());
+        //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         if (Utils.isNetworkConnectedMainThred(this)) {
             loader.show();
