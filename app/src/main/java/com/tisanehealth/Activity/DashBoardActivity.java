@@ -5,6 +5,11 @@ import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.core.app.ActivityCompat;
@@ -15,10 +20,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,12 +47,11 @@ import com.google.android.play.core.install.model.UpdateAvailability;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.gson.Gson;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
 import com.tisanehealth.Adapter.Adapter_menu;
-import com.tisanehealth.Adapter.recharge.Adapter_contacts;
-import com.tisanehealth.Adapter.recharge.Adapter_contacts1;
 import com.tisanehealth.Fragment.AddAssociate.AddAssociateFragment;
 import com.tisanehealth.Fragment.Bank.BankManagement;
 import com.tisanehealth.Fragment.DashBoardFragment;
@@ -62,82 +66,88 @@ import com.tisanehealth.Helper.AppSettings;
 import com.tisanehealth.Helper.Preferences;
 import com.tisanehealth.Helper.RecyclerTouchListener;
 import com.tisanehealth.Model.recharge.ContactModel;
+import com.tisanehealth.Model.tree.TreeResponse;
 import com.tisanehealth.recharge_pay_bill.AddMoneyToWalletActivity;
 import com.tisanehealth.recharge_pay_bill.RechargeHistoryActivity;
-import com.tisanehealth.recharge_pay_bill.mobile_recharge.ContactActivity;
-import com.tisanehealth.recharge_pay_bill.mobile_recharge.Recharge;
 import com.tisanehealth.R;
 import com.tisanehealth.recharge_pay_bill.money_transfer.MoneyTransferHistoryActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import io.paperdb.Paper;
 
+import static com.tisanehealth.Helper.AppUrls.BaseUrl;
+import static com.tisanehealth.Helper.AppUrls.BindDashBoradTreeview;
 
-public class DashBoardActivity extends AppCompatActivity implements View.OnClickListener{
+
+public class DashBoardActivity extends AppCompatActivity implements View.OnClickListener {
 
     NavigationView navigationView;
-    RecyclerView   recyclerView;
+    RecyclerView recyclerView;
     RelativeLayout WaveContainer;
-    DrawerLayout   mDrawer;
+    DrawerLayout mDrawer;
     Preferences pref;
-    public static   RelativeLayout rlHeader,rlMenu;
-    public static  TextView tvHeader,tvUserName,tvUserMobile;
-    public static  ImageView ivMenu,ivLogo;
-    private int    AnimateNumber = 1 ;
+    public static RelativeLayout rlHeader, rlMenu;
+    public static TextView tvHeader, tvUserName, tvUserMobile;
+    public static ImageView ivMenu, ivLogo;
+    public static TreeResponse treeResponse;
+    private int AnimateNumber = 1;
 
     String[] PERMISSIONS = {Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS};
     private static final int PERMISSION_REQUEST_CODE = 2;
-    public static String mobile_type="";
+    public static String mobile_type = "";
 
-    Cursor cursor ;
-    String name, phonenumber ,image;
-    ArrayList<ContactModel> StoreContacts=new ArrayList<>() ;
-    ArrayList<ContactModel> StoreContacts1=new ArrayList<>() ;
+    Cursor cursor;
+    String name, phonenumber, image;
+    ArrayList<ContactModel> StoreContacts = new ArrayList<>();
+    ArrayList<ContactModel> StoreContacts1 = new ArrayList<>();
     ContactModel contactModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
-        overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_in_right);
+        overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
+
+
 
         //RelativeLayout
-        rlHeader   =findViewById(R.id.rlHeader);
-        rlMenu     =findViewById(R.id.rlMenu);
+        rlHeader = findViewById(R.id.rlHeader);
+        rlMenu = findViewById(R.id.rlMenu);
 
         //Textview
-        tvHeader   =findViewById(R.id.tvHeader);
-        tvUserName   =findViewById(R.id.tvUsername);
-        tvUserMobile   =findViewById(R.id.tvUserMobile);
+        tvHeader = findViewById(R.id.tvHeader);
+        tvUserName = findViewById(R.id.tvUsername);
+        tvUserMobile = findViewById(R.id.tvUserMobile);
         //ImageView
-        ivMenu     =findViewById(R.id.ivMenu);
-        ivLogo     =findViewById(R.id.ivLogo);
+        ivMenu = findViewById(R.id.ivMenu);
+        ivLogo = findViewById(R.id.ivLogo);
 
-        pref=new Preferences(this);
+        pref = new Preferences(this);
 
-       try {
-           tvUserName.setText(pref.get(AppSettings.UserName));
-           tvUserMobile.setText(pref.get(AppSettings.UserMobile));
-       }
-       catch (Exception e)
-       {
+        try {
+            tvUserName.setText(pref.get(AppSettings.UserName));
+            tvUserMobile.setText(pref.get(AppSettings.UserMobile));
+        } catch (Exception e) {
 
-       }
+        }
 
 
         //DrawerLayout
-        mDrawer    = findViewById(R.id.drawer_layout);
+        mDrawer = findViewById(R.id.drawer_layout);
 
         //Navigation Initialisation
-        navigationView  = (NavigationView) findViewById(R.id.nav_view);
-        recyclerView    = navigationView.findViewById(R.id.nav_drawer_recycler_view);
-        WaveContainer   = navigationView.findViewById(R.id.WaveContainer);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        recyclerView = navigationView.findViewById(R.id.nav_drawer_recycler_view);
+        WaveContainer = navigationView.findViewById(R.id.WaveContainer);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-
-        Adapter_menu adapter_menu =   new Adapter_menu(this, new Adapter_menu.ListenerOnMenuItemClick() {
+        Adapter_menu adapter_menu = new Adapter_menu(this, new Adapter_menu.ListenerOnMenuItemClick() {
             @Override
             public void Item(int Position) {
                 mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -151,6 +161,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
             }
+
             @Override
             public void onDrawerOpened(View drawerView) {
                 StartAnimation();
@@ -174,122 +185,73 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                 recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, final int position) {
-                 if (pref.get(AppSettings.UserType).equals("Guest"))
-                 {
-                     if (position==0)
-                     {
-                         loadFragment(new DashBoardGuestFragment());
-                     }
-                     else if (position==1)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, AddMoneyToWalletActivity.class));
-                     }
+                if (pref.get(AppSettings.UserType).equals("Guest")) {
+                    if (position == 0) {
+                        loadFragment(new DashBoardGuestFragment());
+                    } else if (position == 1) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, AddMoneyToWalletActivity.class));
+                    } else if (position == 2) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, RechargeHistoryActivity.class));
+                    } else if (position == 3) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, DealWithUsActivity.class));
+                    } else if (position == 4) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, MoneyTransferHistoryActivity.class));
+                    } else if (position == 5) {
+                        logoutDialog();
+                    }
+                } else {
+                    if (position == 0) {
+                        loadFragment(new DashBoardFragment());
+                    } else if (position == 1) {
+                        loadFragment(new AddAssociateFragment());
+                    } else if (position == 2) {
+                        tvHeader.setText("Settings");
+                        // getSupportActionBar().setTitle("Settings");
+                        loadFragment(new SettingFragment());
+                    } else if (position == 3) {
+                        tvHeader.setText("My Team");
+                        loadFragment(new TeamFragment());
+                    } else if (position == 4) {
 
-                     else if (position==2)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, RechargeHistoryActivity.class));
-                     }
-                     else if (position==3)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, DealWithUsActivity.class));
-                     }
-                     else if (position==4)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, MoneyTransferHistoryActivity.class));
-                     }
-                     else if (position==5)
-                     {
-                         logoutDialog();
-                     }
-                 }
-                 else
-                 {
-                     if (position==0)
-                     {
-                         loadFragment(new DashBoardFragment());
-                     }
-                     else if (position==1)
-                     {
-                         loadFragment(new AddAssociateFragment());
-                     }
+                        tvHeader.setText("Payout Report");
+                        loadFragment(new PayoutReportFragment());
+                    } else if (position == 5) {
+                        tvHeader.setText("Member Topup");
+                        loadFragment(new MemberTopup());
+                    } else if (position == 6) {
+                        tvHeader.setText("Pin Management");
+                        loadFragment(new PinManagement());
 
-                     else if (position==2)
-                     {
-                         tvHeader.setText("Settings");
-                         // getSupportActionBar().setTitle("Settings");
-                         loadFragment(new SettingFragment());
-                     }
-                     else if (position==3)
-                     {
-                         tvHeader.setText("My Team");
-                         loadFragment(new TeamFragment());
-                     }
-                     else if (position==4)
-                     {
+                    } else if (position == 7) {
+                        tvHeader.setText("Bank Management");
+                        loadFragment(new BankManagement());
 
-                         tvHeader.setText("Payout Report");
-                         loadFragment(new PayoutReportFragment());
-                     }
-                     else if (position==5)
-                     {
-                         tvHeader.setText("Member Topup");
-                         loadFragment(new MemberTopup());
-                     }
-                     else if (position==6)
-                     {
-                         tvHeader.setText("Pin Management");
-                         loadFragment(new PinManagement());
+                    } else if (position == 8) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, AddMoneyToWalletActivity.class));
 
-                     }
-                     else if (position==7)
-                     {
-                         tvHeader.setText("Bank Management");
-                         loadFragment(new BankManagement());
+                    } else if (position == 9) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, RechargeHistoryActivity.class));
+                    } else if (position == 10) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        loadFragment(new BusinessFragment());
+                    } else if (position == 11) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, DealWithUsActivity.class));
+                    } else if (position == 12) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        startActivity(new Intent(DashBoardActivity.this, MoneyTransferHistoryActivity.class));
+                    } else if (position == 13) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        logoutDialog();
 
-                     }
-                     else if (position==8)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, AddMoneyToWalletActivity.class));
-
-                     }
-
-                     else if (position==9)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, RechargeHistoryActivity.class));
-                     }
-
-                     else if (position==10)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         loadFragment(new BusinessFragment());
-                     }
-                     else if (position==11)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, DealWithUsActivity.class));
-                     }
-                     else if (position==12)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         startActivity(new Intent(DashBoardActivity.this, MoneyTransferHistoryActivity.class));
-                     }
-                     else if (position==13)
-                     {
-                         mDrawer.closeDrawer(GravityCompat.START);
-                         logoutDialog();
-
-                     }
-                 }
-
-
-
-
+                    }
+                }
 
 
             }
@@ -311,19 +273,13 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         }
 
 
-        if (pref.get(AppSettings.UserType).equals("Guest"))
-        {
+        if (pref.get(AppSettings.UserType).equals("Guest")) {
             loadFragment(new DashBoardGuestFragment());
-        }
-        else
-        {
+        } else {
             loadFragment(new DashBoardFragment());
         }
 
-
-
-
-
+        getData();
     }
 
     public void inAppUpdateController() {
@@ -334,7 +290,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         appUpdateInfoTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(Exception e) {
-              //  Toast.makeText(DashBoardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(DashBoardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 //Log.v("ghgghghghghghhg",e.toString());
             }
         });
@@ -342,7 +298,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>() {
             @Override
             public void onSuccess(AppUpdateInfo appUpdateInfo) {
-           //     //Log.v("ghgghghghghghhg","434444444");
+                //     //Log.v("ghgghghghghghhg","434444444");
 
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
 
@@ -353,41 +309,71 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(DashBoardActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                  //      //Log.v("ghgghghghghghhg",e.toString());
+                        //      //Log.v("ghgghghghghghhg",e.toString());
                     }
                 }
             }
         });
     }
 
+    public void getData() {
+//        loader.show();
+//        loader.setCanceledOnTouchOutside(true);
+//        loader.setCancelable(false);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("MemberId", pref.get(AppSettings.UserId));
+            jsonObject.put("UserName", pref.get(AppSettings.UserId));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(BaseUrl + BindDashBoradTreeview)
+                .addJSONObjectBody(jsonObject)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        treeResponse = new Gson().fromJson(response, TreeResponse.class);
+                    }
+
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Toast.makeText(DashBoardActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
+    }
 
 
     //Animation in DrawerLayout
-    private void  StartAnimation(){
+    private void StartAnimation() {
         AnimatedVectorDrawableCompat drawable = null;
-        switch (AnimateNumber){
+        switch (AnimateNumber) {
             case 1:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_1);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_1);
                 break;
             case 2:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_2);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_2);
                 break;
             case 3:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_3);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_3);
                 break;
             case 4:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_4);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_4);
                 break;
             case 5:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_5);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_5);
                 AnimateNumber = 0;
                 break;
             default:
-                drawable =  AnimatedVectorDrawableCompat.create(this,R.drawable.animate_wave_1);
+                drawable = AnimatedVectorDrawableCompat.create(this, R.drawable.animate_wave_1);
         }
 
 
-        AnimateNumber ++ ;
+        AnimateNumber++;
         WaveContainer.setBackground(drawable);
         assert drawable != null;
         drawable.start();
@@ -404,7 +390,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         FragmentManager fm = getFragmentManager();
         if (fm.getBackStackEntryCount() > 0) {
             Log.i("SplashActivity", "popping backstack");
@@ -417,10 +403,9 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.rlMenu:
-                mDrawer.openDrawer(Gravity.START);
+                mDrawer.openDrawer(Gravity.LEFT);
                 break;
         }
     }
@@ -428,7 +413,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
 
     public void GetContactsIntoArrayList() {
         StoreContacts.clear();
-        cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null , ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1", null, "UPPER(" + ContactsContract.Contacts.DISPLAY_NAME + ") ASC" );
+        cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.Contacts.HAS_PHONE_NUMBER + " = 1", null, "UPPER(" + ContactsContract.Contacts.DISPLAY_NAME + ") ASC");
 
         String lastPhoneName = " ";
         while (cursor.moveToNext()) {
@@ -452,16 +437,12 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                 }
 
                 StoreContacts.add(contactModel);
-                Paper.book().write("contactlist",StoreContacts);
-            }
-            else
-            {
+                Paper.book().write("contactlist", StoreContacts);
+            } else {
 
             }
 
         }
-
-
 
 
     }
@@ -478,7 +459,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
-        Button btnOkay,btnCancel;
+        Button btnOkay, btnCancel;
 
         btnOkay = dialog.findViewById(R.id.btnOkay);
         btnCancel = dialog.findViewById(R.id.btnCancel);
@@ -487,11 +468,11 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
-                pref.set(AppSettings.UserId,"");
-                pref.set(AppSettings.UserName,"");
-                pref.set(AppSettings.UserType,"");
+                pref.set(AppSettings.UserId, "");
+                pref.set(AppSettings.UserName, "");
+                pref.set(AppSettings.UserType, "");
                 pref.commit();
-                Intent i=new Intent(DashBoardActivity.this,LoginActivity.class);
+                Intent i = new Intent(DashBoardActivity.this, LoginActivity.class);
                 startActivity(i);
 
             }

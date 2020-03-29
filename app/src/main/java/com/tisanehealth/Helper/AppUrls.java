@@ -37,6 +37,7 @@ public class AppUrls {
     public static  String Pinpurchasebymybank="Pinpurchasebymybank";
     public static  String GetMoneyWallet="GetMoneyWallet";
     public static  String GetNoOfPin="GetNoOfPin";
+    public static  String BindDashBoradTreeview="BindDashBoradTreeview";
     public static  String ForgotTransPass="ForgotTransPass";
         public static  String GetAllBankName="GetAllBankName";
     public static  String getDepositType="getDepositType";

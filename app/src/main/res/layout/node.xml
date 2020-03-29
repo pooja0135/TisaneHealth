@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
+        android:src="@drawable/treeman" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:src="@drawable/treeman"/>
-        <TextView
-            android:background="@drawable/rectangle_button"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/_7sdp"
-            android:paddingRight="@dimen/_7sdp"
-            android:paddingTop="@dimen/_2sdp"
-            android:paddingBottom="@dimen/_2sdp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/rectangle_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/_7sdp"
-            android:paddingRight="@dimen/_7sdp"
-            android:paddingTop="@dimen/_2sdp"
-            android:paddingBottom="@dimen/_2sdp"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp"
-            android:textAlignment="center"
-            android:text="TSN94101"/>
+        android:layout_gravity="center"
+        android:background="@drawable/rectangle_button"
+        android:gravity="center"
+        android:paddingLeft="@dimen/_7sdp"
+        android:paddingTop="@dimen/_2sdp"
+        android:paddingRight="@dimen/_7sdp"
+        android:paddingBottom="@dimen/_2sdp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+    <!-- <TextView
+         android:layout_marginTop="@dimen/_2sdp"
+         android:background="@drawable/rectangle_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:paddingLeft="@dimen/_7sdp"
+         android:paddingRight="@dimen/_7sdp"
+         android:paddingTop="@dimen/_2sdp"
+         android:paddingBottom="@dimen/_2sdp"
+         android:textColor="@color/white"
+         android:textSize="@dimen/_10sdp"
+         android:textAlignment="center"
+         android:text="TSN94101"/>-->
 
 
-
-    </LinearLayout>
+</LinearLayout>

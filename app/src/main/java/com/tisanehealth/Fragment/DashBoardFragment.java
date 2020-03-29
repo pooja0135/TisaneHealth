@@ -2,11 +2,13 @@ package com.tisanehealth.Fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -49,16 +51,16 @@ import static com.tisanehealth.Helper.AppUrls.GetProfile;
 
 public class DashBoardFragment extends Fragment {
 
-    TextView tvTotalPin,tvTodayUsedPin,tvTotalUsedPin,tvTotalTransferUsedPin,tvTotalUnusedPin;
-    TextView tvDirectSponsorIncome,tvSponsorshipIncome,tvRewardIncome,tvTurnoverProfitIncome,tvBusinessPointIncome,tvCrownDirectorshipIncome,tvLeaderPerformanceIncome,tvContextAmount;
-    TextView tvTotalBusinessLeft,tvTotalBusinessRight,tvCFLeftBp,tvCFRightBp;
-    TextView tvPaidIncome,tvPackage;
-    TextView tvNoData,tvNoDataFound;
-    TextView tvTotalMember,tvActiveDirectMember,tvTotalActiveMember,tvTotalLeftID,tvTotalRightID;
-    TextView tvTotalPayout,tvCurrentPayout;
+    TextView tvTotalPin, tvTodayUsedPin, tvTotalUsedPin, tvTotalTransferUsedPin, tvTotalUnusedPin;
+    TextView tvDirectSponsorIncome, tvSponsorshipIncome, tvRewardIncome, tvTurnoverProfitIncome, tvBusinessPointIncome, tvCrownDirectorshipIncome, tvLeaderPerformanceIncome, tvContextAmount;
+    TextView tvTotalBusinessLeft, tvTotalBusinessRight, tvCFLeftBp, tvCFRightBp;
+    TextView tvPaidIncome, tvPackage;
+    TextView tvNoData, tvNoDataFound;
+    TextView tvTotalMember, tvActiveDirectMember, tvTotalActiveMember, tvTotalLeftID, tvTotalRightID;
+    TextView tvTotalPayout, tvCurrentPayout;
 
-    ArrayList<String>newslist=new ArrayList<>();
-    ArrayList<HashMap<String,String>>rewardlist=new ArrayList<>();
+    ArrayList<String> newslist = new ArrayList<>();
+    ArrayList<HashMap<String, String>> rewardlist = new ArrayList<>();
 
     int count = 0;
     final long DELAY_MS = 600;
@@ -86,9 +88,12 @@ public class DashBoardFragment extends Fragment {
             R.drawable.ic_datacard,
             R.drawable.ic_insurance,
             R.drawable.ic_broadband,
+            R.drawable.ic_money_transfer,
+            R.drawable.wallet,
+            R.drawable.ic_history,
             R.drawable.ic_money_transfer};
 
-    ArrayList<RechargeModel> rechargelist=new ArrayList<>();
+    ArrayList<RechargeModel> rechargelist = new ArrayList<>();
 
     Adapter_recharge adapter_recharge;
 
@@ -109,7 +114,7 @@ public class DashBoardFragment extends Fragment {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                       getActivity().finishAffinity();
+                        getActivity().finishAffinity();
                         return true;
                     }
                 }
@@ -118,7 +123,7 @@ public class DashBoardFragment extends Fragment {
         });
 
 
-       initialise(view);
+        initialise(view);
 
         if (Utils.isNetworkConnectedMainThred(getActivity())) {
             loader.show();
@@ -136,107 +141,110 @@ public class DashBoardFragment extends Fragment {
     }
 
 
-
-    public void initialise(View view)
-    {
-        tvTotalPin   =view.findViewById(R.id.tvTotalPin);
-        tvTodayUsedPin   =view.findViewById(R.id.tvTodayUsedPin);
-        tvTotalUsedPin   =view.findViewById(R.id.tvTotalUsedPin);
-        tvTotalUnusedPin   =view.findViewById(R.id.tvTotalUnusedPin);
-        tvTotalTransferUsedPin   =view.findViewById(R.id.tvTotalTransferUsedPin);
+    public void initialise(View view) {
+        tvTotalPin = view.findViewById(R.id.tvTotalPin);
+        tvTodayUsedPin = view.findViewById(R.id.tvTodayUsedPin);
+        tvTotalUsedPin = view.findViewById(R.id.tvTotalUsedPin);
+        tvTotalUnusedPin = view.findViewById(R.id.tvTotalUnusedPin);
+        tvTotalTransferUsedPin = view.findViewById(R.id.tvTotalTransferUsedPin);
 
 
-
-        tvTotalMember            =view.findViewById(R.id.tvTotalMember);
-        tvActiveDirectMember     =view.findViewById(R.id.tvActiveDirectMember);
-        tvTotalActiveMember      =view.findViewById(R.id.tvTotalActiveMember);
-        tvTotalLeftID            =view.findViewById(R.id.tvTotalLeftID);
-        tvTotalRightID           =view.findViewById(R.id.tvTotalRightID);
-
-
-        tvTotalPayout           =view.findViewById(R.id.tvTotalPayout);
-        tvCurrentPayout          =view.findViewById(R.id.tvCurrentPayout);
+        tvTotalMember = view.findViewById(R.id.tvTotalMember);
+        tvActiveDirectMember = view.findViewById(R.id.tvActiveDirectMember);
+        tvTotalActiveMember = view.findViewById(R.id.tvTotalActiveMember);
+        tvTotalLeftID = view.findViewById(R.id.tvTotalLeftID);
+        tvTotalRightID = view.findViewById(R.id.tvTotalRightID);
 
 
-        tvDirectSponsorIncome                     =view.findViewById(R.id.tvDirectSponsorIncome);
-        tvSponsorshipIncome                       =view.findViewById(R.id.tvSponsorshipIncome);
-        tvRewardIncome                            =view.findViewById(R.id.tvRewardIncome);
-        tvContextAmount                           =view.findViewById(R.id.tvContextAmount);
-        tvTurnoverProfitIncome                    =view.findViewById(R.id.tvTurnoverProfitIncome);
-        tvBusinessPointIncome                     =view.findViewById(R.id.tvBusinessPointIncome);
-        tvCrownDirectorshipIncome                 =view.findViewById(R.id.tvCrownDirectorshipIncome);
-        tvLeaderPerformanceIncome                 =view.findViewById(R.id.tvLeaderPerformanceIncome);
+        tvTotalPayout = view.findViewById(R.id.tvTotalPayout);
+        tvCurrentPayout = view.findViewById(R.id.tvCurrentPayout);
 
 
-
-        tvTotalBusinessLeft   =view.findViewById(R.id.tvTotalBusinessLeft);
-        tvTotalBusinessRight   =view.findViewById(R.id.tvTotalBusinessRight);
-
-
-        tvCFLeftBp   =view.findViewById(R.id.tvCFLeftBp);
-        tvCFRightBp   =view.findViewById(R.id.tvCFRightBp);
-
-        tvPackage      =view.findViewById(R.id.tvPackage);
-
-
-        tvNoData      =view.findViewById(R.id.tvNoData);
-        tvNoDataFound      =view.findViewById(R.id.tvNoDataFound);
+        tvDirectSponsorIncome = view.findViewById(R.id.tvDirectSponsorIncome);
+        tvSponsorshipIncome = view.findViewById(R.id.tvSponsorshipIncome);
+        tvRewardIncome = view.findViewById(R.id.tvRewardIncome);
+        tvContextAmount = view.findViewById(R.id.tvContextAmount);
+        tvTurnoverProfitIncome = view.findViewById(R.id.tvTurnoverProfitIncome);
+        tvBusinessPointIncome = view.findViewById(R.id.tvBusinessPointIncome);
+        tvCrownDirectorshipIncome = view.findViewById(R.id.tvCrownDirectorshipIncome);
+        tvLeaderPerformanceIncome = view.findViewById(R.id.tvLeaderPerformanceIncome);
 
 
+        tvTotalBusinessLeft = view.findViewById(R.id.tvTotalBusinessLeft);
+        tvTotalBusinessRight = view.findViewById(R.id.tvTotalBusinessRight);
 
-        recyclerviewReward      =view.findViewById(R.id.recyclerviewReward);
-        recyclerviewNews         =view.findViewById(R.id.recyclerviewNews);
-        rvRecharge               =view.findViewById(R.id.rvRecharge);
+
+        tvCFLeftBp = view.findViewById(R.id.tvCFLeftBp);
+        tvCFRightBp = view.findViewById(R.id.tvCFRightBp);
+
+        tvPackage = view.findViewById(R.id.tvPackage);
+
+
+        tvNoData = view.findViewById(R.id.tvNoData);
+        tvNoDataFound = view.findViewById(R.id.tvNoDataFound);
+
+
+        recyclerviewReward = view.findViewById(R.id.recyclerviewReward);
+        recyclerviewNews = view.findViewById(R.id.recyclerviewNews);
+        rvRecharge = view.findViewById(R.id.rvRecharge);
 
         recyclerviewNews.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerviewReward.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
-        RechargeModel a = new RechargeModel( "Mobile Prepaid", covers[0]);
+        RechargeModel a = new RechargeModel("Mobile Prepaid", covers[0]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Mobile Postpaid", covers[1]);
+        a = new RechargeModel("Mobile Postpaid", covers[1]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Electricity", covers[2]);
+        a = new RechargeModel("Electricity", covers[2]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "DTH", covers[3]);
+        a = new RechargeModel("DTH", covers[3]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Landline", covers[4]);
+        a = new RechargeModel("Landline", covers[4]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "DataCard", covers[5]);
+        a = new RechargeModel("DataCard", covers[5]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Insurance", covers[6]);
+        a = new RechargeModel("Insurance", covers[6]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Broadband", covers[7]);
+        a = new RechargeModel("Broadband", covers[7]);
         rechargelist.add(a);
 
-        a = new RechargeModel( "Money Transfer", covers[8]);
+        a = new RechargeModel("Money Transfer", covers[8]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Wallet", covers[8]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Recharge History", covers[9]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Deal with us", covers[10]);
         rechargelist.add(a);
 
 
-        adapter_recharge=new Adapter_recharge(getActivity(),rechargelist);
-        rvRecharge.setLayoutManager(new GridLayoutManager(getActivity(),4));
+        adapter_recharge = new Adapter_recharge(getActivity(), rechargelist);
+        rvRecharge.setLayoutManager(new GridLayoutManager(getActivity(), 4));
         rvRecharge.setAdapter(adapter_recharge);
 
 
-
         //Preferences
-        pref                = new Preferences(getActivity());
+        pref = new Preferences(getActivity());
 
         //loader
-        loader              = new CustomLoader(getActivity(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
+        loader = new CustomLoader(getActivity(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
 
 
     }
+
     //==================================================Load Fragment=============================================//
-    public void loadFragment(Fragment fragment)
-    {
+    public void loadFragment(Fragment fragment) {
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.setCustomAnimations(
                 R.anim.card_flip_right_in, R.anim.card_flip_right_out,
@@ -246,18 +254,17 @@ public class DashBoardFragment extends Fragment {
     }
 
     //==========================================API===================================================//
-    public void GetDasboardAPI()
-    {
+    public void GetDasboardAPI() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("MemberId",pref.get(AppSettings.UserId));
-            jsonObject.put("SessionId",pref.get(AppSettings.UserId));
+            jsonObject.put("MemberId", pref.get(AppSettings.UserId));
+            jsonObject.put("SessionId", pref.get(AppSettings.UserId));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(BaseUrl+GetDashboardData)
+        AndroidNetworking.post(BaseUrl + GetDashboardData)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -268,43 +275,40 @@ public class DashBoardFragment extends Fragment {
                         try {
 
                             //Log.v("jyiujojjujujujujuujujuj",response.toString());
-                            String Message=   response.getString("Message");
+                            String Message = response.getString("Message");
 
-                            if (Message.equals("Success"))
-                            {
-                                JSONArray jsonArray=response.getJSONArray("DashboardData");
+                            if (Message.equals("Success")) {
+                                JSONArray jsonArray = response.getJSONArray("DashboardData");
 
-                                for(int i=0;i<jsonArray.length();i++)
-                                {
+                                for (int i = 0; i < jsonArray.length(); i++) {
                                     loader.cancel();
-                                    JSONObject jsonObject=jsonArray.getJSONObject(0);
+                                    JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-                                    String totalmember=jsonObject.getString("allmembers")  ;
-                                    String activemember=jsonObject.getString("Activemembers")  ;
-                                    String totaldirectmem=jsonObject.getString("totaldirectmem")  ;
-                                    String totalleftid=jsonObject.getString("TotalLeftId")  ;
-                                    String totalrighttid=jsonObject.getString("totalrightmem")  ;
-
-
-                                    String TotalPayout=jsonObject.getString("TotalPayout")  ;
-                                    String CurrentClosingPayout=jsonObject.getString("CurrentClosingPayout")  ;
+                                    String totalmember = jsonObject.getString("allmembers");
+                                    String activemember = jsonObject.getString("Activemembers");
+                                    String totaldirectmem = jsonObject.getString("totaldirectmem");
+                                    String totalleftid = jsonObject.getString("TotalLeftId");
+                                    String totalrighttid = jsonObject.getString("totalrightmem");
 
 
-                                    String sponsorship_income=jsonObject.getString("roiincome")  ;
-                                    String businesspoint_matching_income=jsonObject.getString("binaryincome")  ;
-                                    String leader_performance_income=jsonObject.getString("LeaderPerformanceIncome")  ;
-                                    String reward_income=jsonObject.getString("Rewards")  ;
-                                    String context_income=jsonObject.getString("ContextIncome")  ;
-                                    String turnOverProfitIncome=jsonObject.getString("TurnOverProfitIncome")  ;
-                                    String crowndirectorship=jsonObject.getString("crowndirectorship")  ;
-                                    String directsponsorincome=jsonObject.getString("directincome")  ;
+                                    String TotalPayout = jsonObject.getString("TotalPayout");
+                                    String CurrentClosingPayout = jsonObject.getString("CurrentClosingPayout");
 
 
+                                    String sponsorship_income = jsonObject.getString("roiincome");
+                                    String businesspoint_matching_income = jsonObject.getString("binaryincome");
+                                    String leader_performance_income = jsonObject.getString("LeaderPerformanceIncome");
+                                    String reward_income = jsonObject.getString("Rewards");
+                                    String context_income = jsonObject.getString("ContextIncome");
+                                    String turnOverProfitIncome = jsonObject.getString("TurnOverProfitIncome");
+                                    String crowndirectorship = jsonObject.getString("crowndirectorship");
+                                    String directsponsorincome = jsonObject.getString("directincome");
 
-                                    String totalleftbus=jsonObject.getString("totalleftbus")  ;
-                                    String totalrightbus=jsonObject.getString("totalrightbus")  ;
-                                    String totalCFLeftBP=jsonObject.getString("TotalCFLeftBP")  ;
-                                    String totalCFRightBP=jsonObject.getString("TotalCFRightBP")  ;
+
+                                    String totalleftbus = jsonObject.getString("totalleftbus");
+                                    String totalrightbus = jsonObject.getString("totalrightbus");
+                                    String totalCFLeftBP = jsonObject.getString("TotalCFLeftBP");
+                                    String totalCFRightBP = jsonObject.getString("TotalCFRightBP");
 
 
                                     tvTotalMember.setText(totalmember);
@@ -332,8 +336,6 @@ public class DashBoardFragment extends Fragment {
                                     tvTotalBusinessRight.setText(totalrightbus);
                                     tvCFLeftBp.setText(totalCFLeftBP);
                                     tvCFRightBp.setText(totalCFRightBP);
-
-
 
 
                                 }
@@ -368,77 +370,65 @@ public class DashBoardFragment extends Fragment {
 */
 
 
-                                   JSONArray jsonArrayNews=response.getJSONArray("NewsList");
+                                JSONArray jsonArrayNews = response.getJSONArray("NewsList");
 
-                                   for(int k=0;k<jsonArrayNews.length();k++)
-                                   {
-                                       JSONObject jsonObject=jsonArrayNews.getJSONObject(k);
-                                       String News=jsonObject.getString("News")  ;
-                                       newslist.add(News);
-                                   }
-                                   if (newslist.size()==0)
-                                   {
-                                       tvNoData.setVisibility(View.VISIBLE);
-                                       recyclerviewNews.setVisibility(View.GONE);
-                                   }
-                                   else
-                                   {
-                                       tvNoData.setVisibility(View.GONE);
-                                       recyclerviewNews.setVisibility(View.VISIBLE);
-                                   }
+                                for (int k = 0; k < jsonArrayNews.length(); k++) {
+                                    JSONObject jsonObject = jsonArrayNews.getJSONObject(k);
+                                    String News = jsonObject.getString("News");
+                                    newslist.add(News);
+                                }
+                                if (newslist.size() == 0) {
+                                    tvNoData.setVisibility(View.VISIBLE);
+                                    recyclerviewNews.setVisibility(View.GONE);
+                                } else {
+                                    tvNoData.setVisibility(View.GONE);
+                                    recyclerviewNews.setVisibility(View.VISIBLE);
+                                }
 
-                                   NewsAdapter newsAdapter=new NewsAdapter(getActivity(),newslist);
-                                   recyclerviewNews.setAdapter(newsAdapter);
+                                NewsAdapter newsAdapter = new NewsAdapter(getActivity(), newslist);
+                                recyclerviewNews.setAdapter(newsAdapter);
 
 
-                                   final Handler handler = new Handler();
-                                   final Runnable runnable = new Runnable() {
+                                final Handler handler = new Handler();
+                                final Runnable runnable = new Runnable() {
 
-                                       @Override
-                                       public void run() {
-                                           if(count == newslist.size()-1){
-                                               count=0;
-                                               recyclerviewNews.scrollToPosition(++count);
-                                               //  handler.postDelayed(this,speedScroll);
-                                           }
-
-                                           else
-                                           {
-                                               recyclerviewNews.scrollToPosition(++count);
-                                               // handler.postDelayed(this,speedScroll);
-                                           }
+                                    @Override
+                                    public void run() {
+                                        if (count == newslist.size() - 1) {
+                                            count = 0;
+                                            recyclerviewNews.scrollToPosition(++count);
+                                            //  handler.postDelayed(this,speedScroll);
+                                        } else {
+                                            recyclerviewNews.scrollToPosition(++count);
+                                            // handler.postDelayed(this,speedScroll);
+                                        }
 
 
-                                       }
-                                   };
+                                    }
+                                };
 
 
-
-                                   timer = new Timer(); // This will create a new Thread
-                                   timer.schedule(new TimerTask() { // task to be scheduled
-                                       @Override
-                                       public void run() {
-                                           handler.post(runnable);
-                                       }
-                                   }, DELAY_MS, PERIOD_MS);
-
+                                timer = new Timer(); // This will create a new Thread
+                                timer.schedule(new TimerTask() { // task to be scheduled
+                                    @Override
+                                    public void run() {
+                                        handler.post(runnable);
+                                    }
+                                }, DELAY_MS, PERIOD_MS);
 
 
+                                JSONArray jsonArrayReward = response.getJSONArray("RewardList");
 
+                                for (int j = 0; j < jsonArrayReward.length(); j++) {
+                                    JSONObject jsonObject = jsonArrayReward.getJSONObject(j);
+                                    HashMap<String, String> map = new HashMap<>();
 
-                                JSONArray jsonArrayReward=response.getJSONArray("RewardList");
-
-                                for(int j=0;j<jsonArrayReward.length();j++)
-                                {
-                                    JSONObject jsonObject=jsonArrayReward.getJSONObject(j);
-                                    HashMap<String,String> map=new HashMap<>();
-
-                                    map.put("Business",jsonObject.getString("Business"));
-                                    map.put("QualifiedDate",jsonObject.getString("QualifiedDate"));
-                                    map.put("Rewards",jsonObject.getString("Rewards"));
-                                    map.put("Status",jsonObject.getString("Status"));
-                                    map.put("Post",jsonObject.getString("Post"));
-                                    map.put("RewardAmount",jsonObject.getString("RewardAmount"));
+                                    map.put("Business", jsonObject.getString("Business"));
+                                    map.put("QualifiedDate", jsonObject.getString("QualifiedDate"));
+                                    map.put("Rewards", jsonObject.getString("Rewards"));
+                                    map.put("Status", jsonObject.getString("Status"));
+                                    map.put("Post", jsonObject.getString("Post"));
+                                    map.put("RewardAmount", jsonObject.getString("RewardAmount"));
                                     rewardlist.add(map);
 
                                     //Log.v("jbjbjbjbjbbfjhfh", String.valueOf(rewardlist.size()));
@@ -446,26 +436,21 @@ public class DashBoardFragment extends Fragment {
                                 }
 
 
-                                if (rewardlist.size()==0)
-                                {
+                                if (rewardlist.size() == 0) {
                                     tvNoDataFound.setVisibility(View.VISIBLE);
                                     recyclerviewReward.setVisibility(View.GONE);
-                                }
-                                else
-                                {
+                                } else {
                                     tvNoDataFound.setVisibility(View.GONE);
                                     recyclerviewReward.setVisibility(View.VISIBLE);
                                 }
 
-                                RewardAdapter rewardAdapter=new RewardAdapter(getActivity(),rewardlist);
+                                RewardAdapter rewardAdapter = new RewardAdapter(getActivity(), rewardlist);
                                 recyclerviewReward.setAdapter(rewardAdapter);
 
 
                                 loader.cancel();
                                 // loadFragment(new TeamFragment());
-                            }
-                            else
-                            {
+                            } else {
                                 loader.cancel();
                             }
 
@@ -484,20 +469,18 @@ public class DashBoardFragment extends Fragment {
                 });
     }
 
-    public void GetProfileAPI()
-    {
+    public void GetProfileAPI() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("MemberId",pref.get(AppSettings.UserId));
-            jsonObject.put("SessionId","");
+            jsonObject.put("MemberId", pref.get(AppSettings.UserId));
+            jsonObject.put("SessionId", "");
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-
-        AndroidNetworking.post(BaseUrl+GetProfile)
+        AndroidNetworking.post(BaseUrl + GetProfile)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -508,37 +491,33 @@ public class DashBoardFragment extends Fragment {
                         try {
 
                             //Log.v("jyiujojjujujujujuujujuj",response.toString());
-                            String Message=   response.getString("Message");
+                            String Message = response.getString("Message");
 
-                            if (Message.equals("Success"))
-                            {
-                                JSONArray jsonArray=response.getJSONArray("ProfileList");
+                            if (Message.equals("Success")) {
+                                JSONArray jsonArray = response.getJSONArray("ProfileList");
 
-                                for(int i=0;i<jsonArray.length();i++)
-                                {
-                                    JSONObject jsonObject=jsonArray.getJSONObject(0);
-                                    String AadharNo=jsonObject.getString("AadharNo")  ;
-                                    String BankBranch=jsonObject.getString("BankBranch")  ;
-                                    String BankIFSC=jsonObject.getString("BankIFSC")  ;
-                                    String BankName=jsonObject.getString("BankName")  ;
-                                    String BankAccountNumber=jsonObject.getString("BankAcNo")  ;
-                                    String MobileNo=jsonObject.getString("MobileNo")  ;
-                                    String Name=jsonObject.getString("Name")  ;
-                                    String PanNo=jsonObject.getString("PanNo")  ;
-                                    String PayeeName=jsonObject.getString("PayeeName")  ;
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                    String AadharNo = jsonObject.getString("AadharNo");
+                                    String BankBranch = jsonObject.getString("BankBranch");
+                                    String BankIFSC = jsonObject.getString("BankIFSC");
+                                    String BankName = jsonObject.getString("BankName");
+                                    String BankAccountNumber = jsonObject.getString("BankAcNo");
+                                    String MobileNo = jsonObject.getString("MobileNo");
+                                    String Name = jsonObject.getString("Name");
+                                    String PanNo = jsonObject.getString("PanNo");
+                                    String PayeeName = jsonObject.getString("PayeeName");
 
 
-
-
-                                    pref.set(AppSettings.PayeeName,PayeeName);
-                                    pref.set(AppSettings.Bankname,BankName);
-                                    pref.set(AppSettings.BankIfsc,BankIFSC);
-                                    pref.set(AppSettings.BankBranch,BankBranch);
-                                    pref.set(AppSettings.BankAccountNumber,BankAccountNumber);
-                                    pref.set(AppSettings.PanNumber,PanNo);
-                                    pref.set(AppSettings.UserMobile,MobileNo);
-                                    pref.set(AppSettings.UserName,Name);
-                                    pref.set(AppSettings.UserPincode,jsonObject.getString("ZipCode"));
+                                    pref.set(AppSettings.PayeeName, PayeeName);
+                                    pref.set(AppSettings.Bankname, BankName);
+                                    pref.set(AppSettings.BankIfsc, BankIFSC);
+                                    pref.set(AppSettings.BankBranch, BankBranch);
+                                    pref.set(AppSettings.BankAccountNumber, BankAccountNumber);
+                                    pref.set(AppSettings.PanNumber, PanNo);
+                                    pref.set(AppSettings.UserMobile, MobileNo);
+                                    pref.set(AppSettings.UserName, Name);
+                                    pref.set(AppSettings.UserPincode, jsonObject.getString("ZipCode"));
                                     pref.commit();
 
                                     DashBoardActivity.tvUserName.setText(pref.get(AppSettings.UserName));
@@ -548,9 +527,7 @@ public class DashBoardFragment extends Fragment {
 
                                 loader.cancel();
 
-                            }
-                            else
-                            {
+                            } else {
                                 loader.cancel();
                             }
 

@@ -12,8 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tisanehealth.Activity.DashBoardActivity;
+import com.tisanehealth.Activity.DealWithUsActivity;
 import com.tisanehealth.Helper.AppSettings;
 import com.tisanehealth.Helper.Preferences;
+import com.tisanehealth.recharge_pay_bill.AddMoneyToWalletActivity;
+import com.tisanehealth.recharge_pay_bill.RechargeHistoryActivity;
 import com.tisanehealth.recharge_pay_bill.broadband.BroadbandListActivity;
 import com.tisanehealth.recharge_pay_bill.dth_recharge.DTHRechargeActivity;
 import com.tisanehealth.recharge_pay_bill.electricitybill.ElectricityBillActivity;
@@ -127,17 +130,17 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                         Toast.makeText(mContext, "Please update your bank details.", Toast.LENGTH_SHORT).show();
                     }
                 }
-                else if (position==8)
+                else if (position==9)
                 {
-
+                    mContext.startActivity(new Intent(mContext, AddMoneyToWalletActivity.class));
                 }
-                else if (position==8)
+                else if (position==10)
                 {
-
+                    mContext.startActivity(new Intent(mContext, RechargeHistoryActivity.class));
                 }
-                else if (position==8)
+                else if (position==11)
                 {
-
+                    mContext.startActivity(new Intent(mContext, DealWithUsActivity.class));
                 }
             }
         });
@@ -151,9 +154,6 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
 
     @Override
     public int getItemCount() {
-
         return dashboardlist.size();
-
-
     }
 }

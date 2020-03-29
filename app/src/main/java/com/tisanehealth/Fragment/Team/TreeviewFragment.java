@@ -39,13 +39,6 @@ public class TreeviewFragment extends Fragment implements View.OnClickListener {
     View v;
 
 
-    //Textview
-    TextView tvMemberId1;
-    TextView tvMemberId2;
-
-    TextView tvUsername1;
-    TextView tvUsername2;
-    TextView tvUsername3;
 
 
     //fragment
