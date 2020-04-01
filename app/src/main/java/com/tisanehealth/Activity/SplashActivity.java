@@ -51,8 +51,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY); // simply enable logging
-        AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.HEADERS);
-        AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BASIC);
+        //AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.HEADERS);
+        //AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BASIC);
         //AndroidNetworking.initializethis, myUnsafeHttpClient());
 
         //ImageView

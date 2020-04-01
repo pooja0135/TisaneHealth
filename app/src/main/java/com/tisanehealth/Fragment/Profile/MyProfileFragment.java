@@ -260,9 +260,9 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
     public void loadFragment(Fragment fragment)
     {
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(
-                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//        transaction.setCustomAnimations(
+//                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+//                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }
@@ -298,9 +298,9 @@ public class MyProfileFragment extends Fragment implements View.OnClickListener 
         bundle.putString("SponsorID", SponsorID);
         bundle.putString("SponsorName", SponsorName);
         fragment.setArguments(bundle);
-        transaction.setCustomAnimations(
-                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//        transaction.setCustomAnimations(
+//                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+//                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }

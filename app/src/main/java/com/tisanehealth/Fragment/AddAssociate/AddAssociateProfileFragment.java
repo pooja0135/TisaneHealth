@@ -154,9 +154,9 @@ public class AddAssociateProfileFragment extends Fragment implements View.OnClic
         bundle.putString("sponser_name", etSponserName.getText().toString());
         bundle.putString("gender", spinnerGender.getSelectedItem().toString());
         fragment.setArguments(bundle);
-        transaction.setCustomAnimations(
-            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-            R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//        transaction.setCustomAnimations(
+//            R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+//            R.anim.card_flip_left_in, R.anim.card_flip_left_out);
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }

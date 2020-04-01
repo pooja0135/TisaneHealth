@@ -34,6 +34,8 @@ import com.tisanehealth.Helper.Preferences;
 import com.tisanehealth.Helper.Utils;
 import com.tisanehealth.Model.recharge.RechargeListModel;
 import com.tisanehealth.R;
+import com.tisanehealth.recharge_pay_bill.datacard.DataCardActivity;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -1102,7 +1104,7 @@ public class InsurancePayActivity  extends AppCompatActivity   implements View.O
                             if (Status)
                             {
                                 // etAmount.setText("");
-                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt,"Success");
+                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt, response.getString("Msg"));
                             }
                             else
                             {
@@ -1156,7 +1158,12 @@ public class InsurancePayActivity  extends AppCompatActivity   implements View.O
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                GetUpdateWalletAPI();
+                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                    GetUpdateWalletAPI();
+                                } else {
+                                    EasyToast.error(InsurancePayActivity.this, response.getString("Msg"));
+                                    loader.dismiss();
+                                }
                             }
                             else
                             {
@@ -1277,7 +1284,7 @@ public class InsurancePayActivity  extends AppCompatActivity   implements View.O
             loader.setCanceledOnTouchOutside(true);
             loader.setCancelable(false);
 
-            OrderStatusUpdateApi(paymentId,online_order_id,"Success","Online","Online",online_transaction_id,"",
+            OrderStatusUpdateApi(paymentId,online_order_id,"Failed","Online","Online",online_transaction_id,"",
                     etAmount.getText().toString(),orderId,paymentId,signature,"Online Payment","","","","");
 
 

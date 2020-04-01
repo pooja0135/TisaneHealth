@@ -341,7 +341,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(DashBoardActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(DashBoardActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
 
                 });
@@ -382,9 +382,9 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
     //Load Fragment
     public void loadFragment(Fragment fragment) {
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(
-                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//        transaction.setCustomAnimations(
+//                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+//                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }

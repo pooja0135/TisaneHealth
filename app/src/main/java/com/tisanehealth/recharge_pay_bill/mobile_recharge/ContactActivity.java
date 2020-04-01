@@ -7,9 +7,6 @@ import android.database.Cursor;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
@@ -27,10 +24,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
 import com.medialablk.easytoast.EasyToast;
 import com.tisanehealth.Adapter.recharge.Adapter_contacts;
 import com.tisanehealth.Adapter.recharge.Adapter_contacts1;
@@ -38,45 +35,45 @@ import com.tisanehealth.Helper.MyKeyboard;
 import com.tisanehealth.Model.recharge.ContactModel;
 import com.tisanehealth.R;
 
-
 import java.util.ArrayList;
 
 import io.paperdb.Paper;
 
 
-public class ContactActivity extends AppCompatActivity implements View.OnClickListener{
+public class ContactActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText etSearch;
     RecyclerView recyclerView;
     Adapter_contacts adapter_contacts;
     Adapter_contacts1 adapter_contacts1;
-    RelativeLayout rlKeypad,rlBack;
+    RelativeLayout rlKeypad, rlBack;
     ImageView ivBack;
-    static final int PICK_CONTACT=1;
-    Cursor cursor ;
-    String name, phonenumber ,image;
-    ArrayList<ContactModel> StoreContacts=new ArrayList<>() ;
-    ArrayList<ContactModel> StoreContacts1=new ArrayList<>() ;
+    static final int PICK_CONTACT = 1;
+    Cursor cursor;
+    String name, phonenumber, image;
+    ArrayList<ContactModel> StoreContacts = new ArrayList<>();
+    ArrayList<ContactModel> StoreContacts1 = new ArrayList<>();
     ContactModel contactModel;
     private FilterType filterType;
     /*  boolean variable for Filtering */
     private boolean isSearchWithPrefix = false;
 
     String[] projection = new String[]{ContactsContract.Contacts._ID, ContactsContract.Data.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.PHOTO_URI};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_activtiy);
 
-        filterType    = FilterType.NAME;
-        rlKeypad      =findViewById(R.id.rlKeypad);
-        rlBack        =findViewById(R.id.rlBack);
-        recyclerView  =findViewById(R.id.recyclerview);
-        etSearch      =findViewById(R.id.etSearch);
+        filterType = FilterType.NAME;
+        rlKeypad = findViewById(R.id.rlKeypad);
+        rlBack = findViewById(R.id.rlBack);
+        recyclerView = findViewById(R.id.recyclerview);
+        etSearch = findViewById(R.id.etSearch);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        TelephonyManager manager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String carrierName = manager.getNetworkOperatorName();
 
         //Log.v("carriername",carrierName);
@@ -97,8 +94,7 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
             }
 
             @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 
             }
 
@@ -150,15 +146,27 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
 }
 */
-        StoreContacts= Paper.book().read("contactlist");
-        StoreContacts1= Paper.book().read("contactlist");
+
+        StoreContacts = Paper.book().read("contactlist");
+        StoreContacts1 = Paper.book().read("contactlist");
+
+
+        if (StoreContacts != null && !StoreContacts.isEmpty()) {
+            findViewById(R.id.emptyContacts).setVisibility(View.GONE);
             adapter_contacts = new Adapter_contacts(ContactActivity.this, StoreContacts);
-            adapter_contacts1 = new Adapter_contacts1(this, StoreContacts1);
-            recyclerView.setAdapter(adapter_contacts);
-
-
-
         }
+        if (StoreContacts1 != null && !StoreContacts1.isEmpty()) {
+            findViewById(R.id.emptyContacts).setVisibility(View.GONE);
+            adapter_contacts1 = new Adapter_contacts1(this, StoreContacts1);
+        }
+        if (adapter_contacts != null) {
+            recyclerView.setAdapter(adapter_contacts);
+            findViewById(R.id.emptyContacts).setVisibility(View.GONE);
+        } else {
+            findViewById(R.id.emptyContacts).setVisibility(View.VISIBLE);
+        }
+
+    }
 
 
     //======================================Dialog==============================================//
@@ -173,12 +181,12 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 
-        final LinearLayout llNumber=dialog.findViewById(R.id.llNumber);
-        final TextView tvNumber=dialog.findViewById(R.id.tvNumber);
+        final LinearLayout llNumber = dialog.findViewById(R.id.llNumber);
+        final TextView tvNumber = dialog.findViewById(R.id.tvNumber);
 
-        final EditText etNumber=dialog.findViewById(R.id.etNumber);
-        ImageView ivBack=dialog.findViewById(R.id.ivBack);
-        final RecyclerView recyclerviewContact=dialog.findViewById(R.id.recyclerviewContact);
+        final EditText etNumber = dialog.findViewById(R.id.etNumber);
+        ImageView ivBack = dialog.findViewById(R.id.ivBack);
+        final RecyclerView recyclerviewContact = dialog.findViewById(R.id.recyclerviewContact);
         recyclerviewContact.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
 
@@ -192,35 +200,34 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         keyboard.setInputConnection(ic);
 
 
-
         etNumber.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int arg1, int arg2, int arg3) {
-                adapter_contacts1.filter(FilterType.NUMBER,charSequence.toString(), isSearchWithPrefix);
-                if (StoreContacts1.isEmpty())
-                {
+                adapter_contacts1.filter(FilterType.NUMBER, charSequence.toString(), isSearchWithPrefix);
+                if (StoreContacts1.isEmpty()) {
 
-                    if (etNumber.getText().toString().isEmpty())
-                    {
+                    if (etNumber.getText().toString().isEmpty()) {
                         llNumber.setVisibility(View.GONE);
                         recyclerviewContact.setVisibility(View.GONE);
                         tvNumber.setText(charSequence.toString());
-                    }
-                    else
-                    {
+                    } else {
                         llNumber.setVisibility(View.VISIBLE);
                         recyclerviewContact.setVisibility(View.GONE);
                         tvNumber.setText(charSequence.toString());
 
                     }
 
-                }
-                else
-                {
+                } else {
                     llNumber.setVisibility(View.GONE);
                     recyclerviewContact.setVisibility(View.VISIBLE);
-                    recyclerviewContact.setAdapter(adapter_contacts1);
+                    if (adapter_contacts1 != null) {
+                        recyclerviewContact.setAdapter(adapter_contacts1);
+                        findViewById(R.id.emptyContacts).setVisibility(View.GONE);
+                    } else {
+                        findViewById(R.id.emptyContacts).setVisibility(View.VISIBLE);
+                    }
+
                 }
 
             }
@@ -240,16 +247,13 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
         llNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tvNumber.getText().toString().length()==10)
-                {
-                    Intent i=new Intent(ContactActivity.this, RechargeActivity.class);
-                    i.putExtra("name","New Number");
-                    i.putExtra("number",tvNumber.getText().toString());
+                if (tvNumber.getText().toString().length() == 10) {
+                    Intent i = new Intent(ContactActivity.this, RechargeActivity.class);
+                    i.putExtra("name", "New Number");
+                    i.putExtra("number", tvNumber.getText().toString());
                     startActivity(i);
-                }
-                else
-                {
-                    EasyToast.warning(ContactActivity.this,"Please select 10 digit Mobile Number.");
+                } else {
+                    EasyToast.warning(ContactActivity.this, "Please select 10 digit Mobile Number.");
                 }
 
             }
@@ -262,45 +266,50 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
 
 
     private KeyboardView.OnKeyboardActionListener mOnKeyboardActionListener = new KeyboardView.OnKeyboardActionListener() {
-        @Override public void onKey(int primaryCode, int[] keyCodes)
-        {
+        @Override
+        public void onKey(int primaryCode, int[] keyCodes) {
             //Here check the primaryCode to see which key is pressed
             //based on the android:codes property
-            if(primaryCode==1)
-            {
-                Log.i("Key","You just pressed 1 button");
+            if (primaryCode == 1) {
+                Log.i("Key", "You just pressed 1 button");
             }
         }
 
-        @Override public void onPress(int arg0) {
+        @Override
+        public void onPress(int arg0) {
         }
 
-        @Override public void onRelease(int primaryCode) {
+        @Override
+        public void onRelease(int primaryCode) {
         }
 
-        @Override public void onText(CharSequence text) {
+        @Override
+        public void onText(CharSequence text) {
         }
 
-        @Override public void swipeDown() {
+        @Override
+        public void swipeDown() {
         }
 
-        @Override public void swipeLeft() {
+        @Override
+        public void swipeLeft() {
         }
 
-        @Override public void swipeRight() {
+        @Override
+        public void swipeRight() {
         }
 
-        @Override public void swipeUp() {
+        @Override
+        public void swipeUp() {
         }
     };
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.rlBack:
-              //  startActivity(new Intent(this,RechargeActivity.class));
+                //  startActivity(new Intent(this,RechargeActivity.class));
 
                 finish();
                 break;

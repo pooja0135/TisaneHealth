@@ -1180,7 +1180,7 @@ public class RechargePostpaidActivity extends AppCompatActivity implements View.
                             if (Status)
                             {
                                 // etAmount.setText("");
-                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt,"Success");
+                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt, response.getString("Msg"));
                             }
                             else
                             {
@@ -1234,7 +1234,12 @@ public class RechargePostpaidActivity extends AppCompatActivity implements View.
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                GetUpdateWalletAPI();
+                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                    GetUpdateWalletAPI();
+                                } else {
+                                    EasyToast.error(RechargePostpaidActivity.this, response.getString("Msg"));
+                                    loader.dismiss();
+                                }
                             }
                             else
                             {
@@ -1355,7 +1360,7 @@ public class RechargePostpaidActivity extends AppCompatActivity implements View.
             loader.setCanceledOnTouchOutside(true);
             loader.setCancelable(false);
 
-            OrderStatusUpdateApi(paymentId,online_order_id,"Success","Online","Online",online_transaction_id,"",
+            OrderStatusUpdateApi(paymentId,online_order_id,"Failed","Online","Online",online_transaction_id,"",
                     etAmount.getText().toString(),orderId,paymentId,signature,"Online Payment","","","","");
 
 

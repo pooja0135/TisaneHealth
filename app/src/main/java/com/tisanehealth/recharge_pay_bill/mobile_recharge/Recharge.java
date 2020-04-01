@@ -84,7 +84,7 @@ public class Recharge extends AppCompatActivity {
         rechargelist.add(a);
 
 
-        adapter_recharge=new Adapter_recharge(this,rechargelist);
+        adapter_recharge=new Adapter_recharge(this,rechargelist, false);
         recyclerviewDashboard.setLayoutManager(new GridLayoutManager(this,4));
         recyclerviewDashboard.setAdapter(adapter_recharge);
 

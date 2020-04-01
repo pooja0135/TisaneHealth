@@ -112,9 +112,9 @@ public class AddAssociateAddressFragment extends Fragment implements View.OnClic
         }
 
 
-        transaction.setCustomAnimations(
-                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
+//        transaction.setCustomAnimations(
+//                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
+//                R.anim.card_flip_left_in, R.anim.card_flip_left_out);
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }

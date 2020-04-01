@@ -533,7 +533,7 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
                 });
     }
 
-    public void RechargeOrderStatusUpdateApi(String Myhpayid, String OrderId, String PayStatus, String PaymentMethod, String PaymentMode, final String TransactionId,
+    public void     RechargeOrderStatusUpdateApi(String Myhpayid, String OrderId, String PayStatus, String PaymentMethod, String PaymentMode, final String TransactionId,
                                              String credit_used, String razorpay_amt, String razorpay_order_id, String razorpay_payment_id, String razorpay_signature, String service,
                                              String rech_mobile, String rech_order_id, final String rech_status, final String rech_type) {
         JSONObject jsonObject = new JSONObject();
@@ -1080,7 +1080,7 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
                             if (Status)
                             {
                                 // etAmount.setText("");
-                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt,"Success");
+                                UpdateWalletApi(pref.get(AppSettings.UserId),razorpay_amt, response.getString("Msg"));
                             }
                             else
                             {
@@ -1134,7 +1134,12 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                GetUpdateWalletAPI();
+                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                    GetUpdateWalletAPI();
+                                } else {
+                                    EasyToast.error(LandlinePaidActivity.this, response.getString("Msg"));
+                                    loader.dismiss();
+                                }
                             }
                             else
                             {
@@ -1255,7 +1260,7 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
             loader.setCanceledOnTouchOutside(true);
             loader.setCancelable(false);
 
-            OrderStatusUpdateApi(paymentId,online_order_id,"Success","Online","Online",online_transaction_id,"",
+            OrderStatusUpdateApi(paymentId,online_order_id,"Failed","Online","Online",online_transaction_id,"",
                     etAmount.getText().toString(),orderId,paymentId,signature,"Online Payment","","","","");
 
 

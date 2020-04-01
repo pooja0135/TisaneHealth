@@ -102,11 +102,6 @@ public class Adapter_rechargehistory extends RecyclerView.Adapter<Adapter_rechar
 
 
 
-
-
-
-
-
         if (rechargehistorylist.get(position).get("bill_status").equals("Recharge"))
         {
             holder.tvPaid.setText("Mobile Recharge");
