@@ -653,9 +653,10 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                EasyToast.error(DataCardActivity.this,"Recharge Successful.You will receive confirmation message in few minutes." );
-                                startActivity(new Intent(DataCardActivity.this,DashBoardActivity.class));
-
+                                if (rech_status.equalsIgnoreCase("success")) {
+                                    EasyToast.error(DataCardActivity.this, "Recharge Successful.You will receive confirmation message in few minutes.");
+                                    startActivity(new Intent(DataCardActivity.this, DashBoardActivity.class));
+                                }
 
 
                             }
@@ -792,18 +793,19 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
                             JSONObject jsonObject=response.getJSONObject(0);
 
                             String status=   jsonObject.getString("error_code");
+                            String rech_mobile=jsonObject.getString("mobile");
+                            String rech_order_id=jsonObject.getString("orderId");
+                            String rech_status=jsonObject.getString("status");
+                            String rech_type=jsonObject.getString("service");
                             if (status.equals("200")) {
                                 if (Utils.isNetworkConnectedMainThred(DataCardActivity.this)) {
                                     loader.show();
                                     loader.setCanceledOnTouchOutside(true);
                                     loader.setCancelable(false);
 
-                                    String rech_mobile=jsonObject.getString("mobile");
-                                    String rech_order_id=jsonObject.getString("orderId");
-                                    String rech_status=jsonObject.getString("status");
-                                    String rech_type=jsonObject.getString("service");
 
-                                    RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Data_Card", rech_mobile  , rech_order_id, rech_status, rech_type);
+
+
 
                                 } else {
                                     EasyToast.error(DataCardActivity.this, "No Internet Connnection");
@@ -812,12 +814,22 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
                             }
                             else if (status.equals("201"))
                             {
-                                RechargeStatusApi(id);
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        RechargeStatusApi(id);
+                                    }
+                                }, 2000);
                             }
 
                             else if (status.equals("105"))
                             {
-                                RechargeStatusApi(id);
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        RechargeStatusApi(id);
+                                    }
+                                }, 2000);
 
 
                             }
@@ -830,12 +842,9 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
                                     loader.setCanceledOnTouchOutside(true);
                                     loader.setCancelable(false);
 
-                                    String rech_mobile=jsonObject.getString("mobile");
-                                    String rech_order_id=jsonObject.getString("orderId");
-                                    String rech_status=jsonObject.getString("status");
-                                    String rech_type=jsonObject.getString("service");
 
-                                    RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Data_Card", rech_mobile  , rech_order_id, rech_status, rech_type);
+
+                                   // RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Data_Card", rech_mobile  , rech_order_id, rech_status, rech_type);
                                 } else {
                                     EasyToast.error(DataCardActivity.this, "No Internet Connnection");
                                 }
@@ -845,7 +854,7 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
                             }
 
 
-
+                            RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Data_Card", rech_mobile  , rech_order_id, rech_status, rech_type);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -1127,10 +1136,10 @@ public class DataCardActivity extends AppCompatActivity implements View.OnClickL
             jsonObject.put("razorpay_order_id", razorpay_order_id);
             jsonObject.put("razorpay_payment_id", razorpay_payment_id);
             jsonObject.put("razorpay_signature", razorpay_signature);
-            jsonObject.put("rech_mobile", "");
-            jsonObject.put("rech_order_id", "");
-            jsonObject.put("rech_status", "");
-            jsonObject.put("rech_type", "");
+            jsonObject.put("rech_mobile", rech_mobile);
+            jsonObject.put("rech_order_id", rech_order_id);
+            jsonObject.put("rech_status", rech_status);
+            jsonObject.put("rech_type", rech_type);
             jsonObject.put("service", service);
             jsonObject.put("Amount", etAmount.getText().toString());
             jsonObject.put("MemberId", pref.get(AppSettings.UserId));

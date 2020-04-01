@@ -740,7 +740,7 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(BaseUrl+OrderStatusUpdate)
+        AndroidNetworking.post(BaseUrl + OrderStatusUpdate)
                 .addJSONObjectBody(jsonObject)
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -750,16 +750,15 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                     public void onResponse(JSONObject response) {
                         try {
 
-                            Log.v("recharge_status4",response.toString());
-                            boolean Status=   response.getBoolean("Status");
-                            if (Status)
-                            {
-                                EasyToast.error(RechargeActivity.this,"Recharge Successful.You will receive confirmation message in few minutes." );
-                                startActivity(new Intent(RechargeActivity.this,DashBoardActivity.class));
-                            }
-                            else
-                            {
-                                EasyToast.error(RechargeActivity.this,response.getString("Msg") );
+                            Log.v("recharge_status4", response.toString());
+                            boolean Status = response.getBoolean("Status");
+                            if (Status) {
+                                if (rech_status.equalsIgnoreCase("success")) {
+                                    EasyToast.info(RechargeActivity.this, "Recharge Successful.You will receive confirmation message in few minutes.");
+                                    startActivity(new Intent(RechargeActivity.this, DashBoardActivity.class));
+                                }
+                            } else {
+                                EasyToast.error(RechargeActivity.this, response.getString("Msg"));
                                 loader.dismiss();
                             }
 
@@ -778,7 +777,7 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                     }
                 });
     }
-
+//***here
     public void RechargeApi(String mobile,String amount,String operator_id,String urid,String opvalue1,String opvalue2,String opvalue3) {
 
         String url="https://api.rechapi.com/recharge.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&mobile="+mobile+"&amount="+amount+"&opid="+operator_id+"&urid="+urid+"&opvalue1="+opvalue1+"&opvalue2="+opvalue2+"&opvalue3="+opvalue3;
@@ -879,6 +878,7 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                 });
     }
 
+    //**here
     public void RechargeStatusApi(final String id) {
         String url="https://api.rechapi.com/api_status.php?format=json&token=iYpga6msh23e1Bkqvovpid9xoFijuN&orderId="+id;
 
@@ -898,38 +898,39 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                             JSONArray response =object.getJSONArray("data");
                             JSONObject jsonObject=response.getJSONObject(0);
 
-                            String status=   jsonObject.getString("error_code");
+                            String status = jsonObject.getString("error_code");
+                            String rech_mobile = jsonObject.getString("mobile");
+                            String rech_order_id = jsonObject.getString("orderId");
+                            String rech_status = jsonObject.getString("status");
+                            String rech_type = jsonObject.getString("service");
                             if (status.equals("200")) {
                                 if (Utils.isNetworkConnectedMainThred(RechargeActivity.this)) {
                                     loader.show();
                                     loader.setCanceledOnTouchOutside(true);
                                     loader.setCancelable(false);
 
-                                    String rech_mobile=jsonObject.getString("mobile");
-                                    String rech_order_id=jsonObject.getString("orderId");
-                                    String rech_status=jsonObject.getString("status");
-                                    String rech_type=jsonObject.getString("service");
-
-                                    RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Mobile_Prepaid", rech_mobile  , rech_order_id, rech_status, rech_type);
+                                    //RechargeOrderStatusUpdateApi("", OrderId, "Success", "Wallet", "Wallet", TransactionId, "", "", "", "", "", "Mobile_Prepaid", rech_mobile, rech_order_id, rech_status, rech_type);
 
                                 } else {
                                     EasyToast.error(RechargeActivity.this, "No Internet Connnection");
                                 }
 
-                            }
-                            else if (status.equals("201"))
-                            {
-                                RechargeStatusApi(id);
-                            }
+                            } else if (status.equals("201")) {
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        RechargeStatusApi(id);
+                                    }
+                                }, 2000);
 
-                            else if (status.equals("112"))
-                            {
-                                RechargeStatusApi(id);
-
-
-                            }
-                            else
-                            {
+                            } else if (status.equals("112")) {
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        RechargeStatusApi(id);
+                                    }
+                                }, 2000);
+                            } else {
                                 Toast.makeText(RechargeActivity.this, jsonObject.getString("resText"), Toast.LENGTH_SHORT).show();
 
                                 if (Utils.isNetworkConnectedMainThred(RechargeActivity.this)) {
@@ -937,21 +938,14 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                                     loader.setCanceledOnTouchOutside(true);
                                     loader.setCancelable(false);
 
-                                    String rech_mobile=jsonObject.getString("mobile");
-                                    String rech_order_id=jsonObject.getString("orderId");
-                                    String rech_status=jsonObject.getString("status");
-                                    String rech_type=jsonObject.getString("service");
-
-                                    RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Mobile_Prepaid", rech_mobile  , rech_order_id, rech_status, rech_type);
+                                    //RechargeOrderStatusUpdateApi("",OrderId,"Success","Wallet","Wallet",TransactionId,"","","","","","Mobile_Prepaid", rech_mobile  , rech_order_id, rech_status, rech_type);
                                 } else {
                                     EasyToast.error(RechargeActivity.this, "No Internet Connnection");
                                 }
 
 
-
                             }
-
-
+                            RechargeOrderStatusUpdateApi("", OrderId, "Success", "Wallet", "Wallet", TransactionId, "", "", "", "", "", "Mobile_Prepaid", rech_mobile, rech_order_id, rech_status, rech_type);
 
 
                         } catch (JSONException e) {
@@ -1179,10 +1173,10 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
             jsonObject.put("razorpay_order_id", razorpay_order_id);
             jsonObject.put("razorpay_payment_id", razorpay_payment_id);
             jsonObject.put("razorpay_signature", razorpay_signature);
-            jsonObject.put("rech_mobile", "");
-            jsonObject.put("rech_order_id", "");
-            jsonObject.put("rech_status", "");
-            jsonObject.put("rech_type", "");
+            jsonObject.put("rech_mobile", rech_mobile);
+            jsonObject.put("rech_order_id", rech_order_id);
+            jsonObject.put("rech_status", rech_status);
+            jsonObject.put("rech_type", rech_type);
             jsonObject.put("service", service);
             jsonObject.put("Amount", etAmount.getText().toString());
             jsonObject.put("MemberId", pref.get(AppSettings.UserId));
