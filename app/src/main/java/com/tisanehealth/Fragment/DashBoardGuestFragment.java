@@ -55,6 +55,9 @@ public class DashBoardGuestFragment extends Fragment {
             R.drawable.ic_datacard,
             R.drawable.ic_insurance,
             R.drawable.ic_broadband,
+            R.drawable.water_bill,
+            R.drawable.gas_bill,
+            R.drawable.metro_bill,
             R.drawable.wallet,
             R.drawable.ic_history,
             R.drawable.ic_money_transfer
@@ -125,13 +128,22 @@ public class DashBoardGuestFragment extends Fragment {
         a = new RechargeModel("Broadband", covers[7]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Wallet", covers[8]);
+        a = new RechargeModel("Water", covers[8]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Recharge History", covers[9]);
+        a = new RechargeModel("Gas", covers[9]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Deal with us", covers[10]);
+        a = new RechargeModel("Metro", covers[10]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Wallet", covers[11]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Recharge History", covers[12]);
+        rechargelist.add(a);
+
+        a = new RechargeModel("Deal with us", covers[13]);
         rechargelist.add(a);
 
 
