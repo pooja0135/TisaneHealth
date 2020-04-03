@@ -1255,7 +1255,7 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(RechargeActivity.this, response.getString("Msg"));

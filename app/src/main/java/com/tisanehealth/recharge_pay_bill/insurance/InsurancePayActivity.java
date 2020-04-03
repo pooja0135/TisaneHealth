@@ -1167,7 +1167,7 @@ public class InsurancePayActivity  extends AppCompatActivity   implements View.O
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(InsurancePayActivity.this, response.getString("Msg"));

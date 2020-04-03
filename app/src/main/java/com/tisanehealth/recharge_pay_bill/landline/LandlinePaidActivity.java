@@ -1140,7 +1140,7 @@ public class LandlinePaidActivity extends AppCompatActivity  implements View.OnC
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(LandlinePaidActivity.this, response.getString("Msg"));

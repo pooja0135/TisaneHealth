@@ -943,7 +943,7 @@ public class DTHListActivity extends AppCompatActivity implements View.OnClickLi
 
                             boolean Status = response.getBoolean("Status");
                             if (Status) {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(DTHListActivity.this, response.getString("Msg"));

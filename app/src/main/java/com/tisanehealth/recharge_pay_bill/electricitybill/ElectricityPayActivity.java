@@ -1158,7 +1158,7 @@ public class ElectricityPayActivity extends AppCompatActivity implements Payment
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(ElectricityPayActivity.this, response.getString("Msg"));

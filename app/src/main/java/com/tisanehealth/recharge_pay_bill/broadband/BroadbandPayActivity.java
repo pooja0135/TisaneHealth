@@ -1176,7 +1176,12 @@ public class BroadbandPayActivity  extends AppCompatActivity implements View.OnC
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                GetUpdateWalletAPI();
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
+                                    GetUpdateWalletAPI();
+                                } else {
+                                    EasyToast.error(BroadbandPayActivity.this, response.getString("Msg"));
+                                    loader.dismiss();
+                                }
                             }
                             else
                             {

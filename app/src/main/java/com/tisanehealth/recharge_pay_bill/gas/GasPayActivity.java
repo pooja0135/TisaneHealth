@@ -1160,7 +1160,7 @@ public class GasPayActivity extends AppCompatActivity implements PaymentResultWi
                             boolean Status=   response.getBoolean("Status");
                             if (Status)
                             {
-                                if (response.getString("Msg").equalsIgnoreCase("success")) {
+                                if (response.getString("Msg").equalsIgnoreCase("success")||response.getString("Msg").equalsIgnoreCase("Amount Added into customer wallet")) {
                                     GetUpdateWalletAPI();
                                 } else {
                                     EasyToast.error(GasPayActivity.this, response.getString("Msg"));
