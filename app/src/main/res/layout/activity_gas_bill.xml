@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+  >
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:background="@drawable/rectangle"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Type your provider name...."
+            android:paddingLeft="@dimen/_30sdp"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/black"/>
+        <RelativeLayout
+            android:id="@+id/rlBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="@dimen/_15sdp"
+                android:rotation="180"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_arrow_right"
+                android:tint="@color/grey_700"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.tisanehealth.Helper.MovingViewPager
+        android:visibility="gone"
+        android:id="@+id/vpGas"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp">
+
+    </com.tisanehealth.Helper.MovingViewPager>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All Billers"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        android:layout_margin="@dimen/_10sdp"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rvGas"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+</LinearLayout>

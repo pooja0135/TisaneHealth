@@ -23,8 +23,10 @@ import com.tisanehealth.recharge_pay_bill.RechargeHistoryActivity;
 import com.tisanehealth.recharge_pay_bill.broadband.BroadbandListActivity;
 import com.tisanehealth.recharge_pay_bill.dth_recharge.DTHRechargeActivity;
 import com.tisanehealth.recharge_pay_bill.electricitybill.ElectricityBillActivity;
+import com.tisanehealth.recharge_pay_bill.gas.GasBillActivity;
 import com.tisanehealth.recharge_pay_bill.insurance.InsuranceListActivity;
 import com.tisanehealth.recharge_pay_bill.landline.LandlineListActivity;
+import com.tisanehealth.recharge_pay_bill.metro.MetroBillActivity;
 import com.tisanehealth.recharge_pay_bill.mobile_recharge.ContactActivity;
 import com.tisanehealth.recharge_pay_bill.money_transfer.MoneyTransferActivity;
 import com.tisanehealth.recharge_pay_bill.waterbill.WaterBillActivity;
@@ -111,9 +113,9 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                     } else if (position == 8) {
                         mContext.startActivity(new Intent(mContext, WaterBillActivity.class));
                     } else if (position == 9) {
-                        //mContext.startActivity(new Intent(mContext, BroadbandListActivity.class));
+                        mContext.startActivity(new Intent(mContext, GasBillActivity.class));
                     } else if (position == 10) {
-                        //mContext.startActivity(new Intent(mContext, BroadbandListActivity.class));
+                        mContext.startActivity(new Intent(mContext, MetroBillActivity.class));
                     }
 
 
@@ -126,7 +128,8 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                         } else {
                             Toast.makeText(mContext, "Please update your bank details.", Toast.LENGTH_SHORT).show();
                         }
-                    }*/ else if (position == 11) {
+                    }*/
+                    else if (position == 11) {
                         mContext.startActivity(new Intent(mContext, AddMoneyToWalletActivity.class));
                     } else if (position == 12) {
                         mContext.startActivity(new Intent(mContext, RechargeHistoryActivity.class));
@@ -158,13 +161,10 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                     } else if (position == 8) {
                         mContext.startActivity(new Intent(mContext, WaterBillActivity.class));
                     } else if (position == 9) {
-                        //mContext.startActivity(new Intent(mContext, BroadbandListActivity.class));
+                        mContext.startActivity(new Intent(mContext, GasBillActivity.class));
                     } else if (position == 10) {
-                        //mContext.startActivity(new Intent(mContext, BroadbandListActivity.class));
-                    }
-
-
-                    else if (position == 11) {
+                        mContext.startActivity(new Intent(mContext, MetroBillActivity.class));
+                    } else if (position == 11) {
                         if (!pref.get(AppSettings.BankAccountNumber).isEmpty() && !pref.get(AppSettings.Bankname).isEmpty() && !pref.get(AppSettings.PayeeName).isEmpty()
                                 && !pref.get(AppSettings.BankIfsc).isEmpty() && !pref.get(AppSettings.BankAccountNumber).isEmpty()) {
                             mContext.startActivity(new Intent(mContext, MoneyTransferActivity.class));
