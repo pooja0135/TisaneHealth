@@ -455,7 +455,7 @@ public abstract class GraphActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         progressDialog.dismiss();
-                        Toast.makeText(GraphActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GraphActivity.this, "Something went wrong!"+anError.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 });
