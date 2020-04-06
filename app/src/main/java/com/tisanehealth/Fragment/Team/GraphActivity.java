@@ -1,18 +1,25 @@
 package com.tisanehealth.Fragment.Team;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.gson.Gson;
 import com.tisanehealth.Activity.DashBoardActivity;
 import com.tisanehealth.Helper.CustomLoader;
 import com.tisanehealth.Helper.Preferences;
@@ -34,12 +41,18 @@ import com.tisanehealth.Model.tree.TreeL4P8;
 import com.tisanehealth.Model.tree.TreeResponse;
 import com.tisanehealth.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import de.blox.graphview.BaseGraphAdapter;
 import de.blox.graphview.Graph;
 import de.blox.graphview.GraphAdapter;
 import de.blox.graphview.GraphView;
 import de.blox.graphview.Node;
 import de.blox.graphview.ViewHolder;
+
+import static com.tisanehealth.Helper.AppUrls.BaseUrl;
+import static com.tisanehealth.Helper.AppUrls.BindDashBoradTreeview;
 
 public abstract class GraphActivity extends AppCompatActivity {
     private int nodeCount = 1;
@@ -55,25 +68,42 @@ public abstract class GraphActivity extends AppCompatActivity {
         loader = new CustomLoader(this, android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
         pref = new Preferences(this);
 
-
-        ((TextView) findViewById(R.id.teamaAName)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getTeamA());
-        ((TextView) findViewById(R.id.teamaAId)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getLeftMember());
-        ((TextView) findViewById(R.id.teamaAActive)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getLInactiveMember());
-        ((TextView) findViewById(R.id.teamaABP)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getLpv());
-        ((TextView) findViewById(R.id.teamaBName)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getTeamB());
-        ((TextView) findViewById(R.id.teamBId)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getRightMember());
-        ((TextView) findViewById(R.id.teamaBActive)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getRInactiveMember());
-        ((TextView) findViewById(R.id.teamaBBP)).setText(DashBoardActivity.treeResponse.getTreeDashboard().get(0).getRpv());
-
-        final Graph graph = createGraph(DashBoardActivity.treeResponse);
-        setupAdapter(graph);
-
         findViewById(R.id.rlBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
+        findViewById(R.id.btnGet).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!((EditText) findViewById(R.id.memberId)).getText().toString().equals("")) {
+                    getData((((EditText) findViewById(R.id.memberId)).getText()).toString());
+                } else {
+                    Toast.makeText(GraphActivity.this, "Enter Member Id", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        //getData();
+        initViews(DashBoardActivity.treeResponse);
+    }
+
+
+    private void initViews(TreeResponse treeResponse) {
+        ((TextView) findViewById(R.id.teamaAName)).setText(treeResponse.getTreeDashboard().get(0).getTeamA());
+        ((TextView) findViewById(R.id.teamaAId)).setText(treeResponse.getTreeDashboard().get(0).getLeftMember());
+        ((TextView) findViewById(R.id.teamaAActive)).setText(treeResponse.getTreeDashboard().get(0).getLInactiveMember());
+        ((TextView) findViewById(R.id.teamaABP)).setText(treeResponse.getTreeDashboard().get(0).getLpv());
+        ((TextView) findViewById(R.id.teamaBName)).setText(treeResponse.getTreeDashboard().get(0).getTeamB());
+        ((TextView) findViewById(R.id.teamBId)).setText(treeResponse.getTreeDashboard().get(0).getRightMember());
+        ((TextView) findViewById(R.id.teamaBActive)).setText(treeResponse.getTreeDashboard().get(0).getRInactiveMember());
+        ((TextView) findViewById(R.id.teamaBBP)).setText(treeResponse.getTreeDashboard().get(0).getRpv());
+
+        final Graph graph = createGraph(treeResponse);
+        setupAdapter(graph);
     }
 
 
@@ -387,5 +417,47 @@ public abstract class GraphActivity extends AppCompatActivity {
 
     protected String getNodeText() {
         return "Node " + nodeCount++;
+    }
+
+    public void getData(String memberId) {
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+//        loader.show();
+//        loader.setCanceledOnTouchOutside(true);
+//        loader.setCancelable(false);
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("MemberId", memberId);
+            jsonObject.put("UserName", memberId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(BaseUrl + BindDashBoradTreeview)
+                .addJSONObjectBody(jsonObject)
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+                            TreeResponse treeResponse = new Gson().fromJson(response, TreeResponse.class);
+                            initViews(treeResponse);
+                        } catch (Exception e) {
+                            Toast.makeText(GraphActivity.this, "No Data Found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                    @Override
+                    public void onError(ANError anError) {
+                        progressDialog.dismiss();
+                        Toast.makeText(GraphActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+
+                });
     }
 }
