@@ -1,26 +1,34 @@
 package com.tisanehealth.Fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.tisanehealth.Adapter.Adapter_recharge;
-import com.tisanehealth.Adapter.CustomPagerAdapter;
-import com.tisanehealth.Helper.CustomLoader;
+import com.tisanehealth.Activity.DashBoardActivity;
+import com.tisanehealth.Helper.AppSettings;
 import com.tisanehealth.Helper.Preferences;
-import com.tisanehealth.Model.RechargeModel;
 import com.tisanehealth.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Timer;
+import com.tisanehealth.recharge_pay_bill.AddMoneyToWalletActivity;
+import com.tisanehealth.recharge_pay_bill.RechargeHistoryActivity;
+import com.tisanehealth.recharge_pay_bill.broadband.BroadbandListActivity;
+import com.tisanehealth.recharge_pay_bill.dth_recharge.DTHRechargeActivity;
+import com.tisanehealth.recharge_pay_bill.electricitybill.ElectricityBillActivity;
+import com.tisanehealth.recharge_pay_bill.gas.GasBillActivity;
+import com.tisanehealth.recharge_pay_bill.insurance.InsuranceListActivity;
+import com.tisanehealth.recharge_pay_bill.landline.LandlineListActivity;
+import com.tisanehealth.recharge_pay_bill.metro.MetroBillActivity;
+import com.tisanehealth.recharge_pay_bill.mobile_recharge.ContactActivity;
+import com.tisanehealth.recharge_pay_bill.money_transfer.MoneyTransferActivity;
+import com.tisanehealth.recharge_pay_bill.waterbill.WaterBillActivity;
 
 import static com.tisanehealth.Activity.DashBoardActivity.ivLogo;
 import static com.tisanehealth.Activity.DashBoardActivity.rlHeader;
@@ -28,43 +36,7 @@ import static com.tisanehealth.Activity.DashBoardActivity.tvHeader;
 
 public class DashBoardGuestFragment extends Fragment {
 
-
-    ArrayList<String> newslist = new ArrayList<>();
-    ArrayList<HashMap<String, String>> rewardlist = new ArrayList<>();
-
-    int count = 0;
-    final long DELAY_MS = 600;
-    final long PERIOD_MS = 2000;
-    Timer timer;
-
-    CustomPagerAdapter customPagerAdapter;
-    RecyclerView rvRecharge;
-
-
-    //Preferences
     Preferences pref;
-    //CustomLoader
-    CustomLoader loader;
-
-    int[] covers = new int[]{
-            R.drawable.ic_mobile,
-            R.drawable.ic_mobile1,
-            R.drawable.ic_electricity,
-            R.drawable.ic_satellite,
-            R.drawable.ic_telephone,
-            R.drawable.ic_datacard,
-            R.drawable.ic_insurance,
-            R.drawable.ic_broadband,
-            R.drawable.water_bill,
-            R.drawable.gas_bill,
-            R.drawable.metro_bill,
-            R.drawable.wallet,
-            R.drawable.ic_history,
-            R.drawable.ic_money_transfer
-    };
-    ArrayList<RechargeModel> rechargelist = new ArrayList<>();
-
-    Adapter_recharge adapter_recharge;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,21 +50,20 @@ public class DashBoardGuestFragment extends Fragment {
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
-        view.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        getActivity().finishAffinity();
-                        return true;
-                    }
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    getActivity().finishAffinity();
+                    return true;
                 }
-                return false;
             }
+            return false;
         });
 
 
         initialise(view);
+        //Preferences
+        pref = new Preferences(getActivity());
 
 
         return view;
@@ -102,71 +73,121 @@ public class DashBoardGuestFragment extends Fragment {
 
 
     public void initialise(View view) {
-        rvRecharge = view.findViewById(R.id.rvRecharge);
+        Context mContext = getContext();
+        view.findViewById(R.id.llWallet).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, AddMoneyToWalletActivity.class));
+        });
 
-        RechargeModel a = new RechargeModel("Mobile Prepaid", covers[0]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llRechargeHistory).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, RechargeHistoryActivity.class));
+        });
 
-        a = new RechargeModel("Mobile Postpaid", covers[1]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llMobPrepaid).setOnClickListener(v -> {
+            DashBoardActivity.mobile_type = "Prepaid";
+            mContext.startActivity(new Intent(mContext, ContactActivity.class));
+        });
+        view.findViewById(R.id.llMobPost).setOnClickListener(v -> {
+            DashBoardActivity.mobile_type = "Postpaid";
+            mContext.startActivity(new Intent(mContext, ContactActivity.class));
+        });
+        view.findViewById(R.id.llDth).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, DTHRechargeActivity.class));
+        });
+        view.findViewById(R.id.llDataCard).setOnClickListener(v -> {
+            DashBoardActivity.mobile_type = "Datacard";
+            mContext.startActivity(new Intent(mContext, ContactActivity.class));
+        });
 
-        a = new RechargeModel("Electricity", covers[2]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llElectricity).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, ElectricityBillActivity.class));
+        });
 
-        a = new RechargeModel("DTH", covers[3]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llLandline).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, LandlineListActivity.class));
+        });
+        view.findViewById(R.id.llBroadband).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, BroadbandListActivity.class));
+        });
+        view.findViewById(R.id.llWater).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, WaterBillActivity.class));
+        });
+        view.findViewById(R.id.llInsurance).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, InsuranceListActivity.class));
+        });
 
-        a = new RechargeModel("Landline", covers[4]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llGas).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, GasBillActivity.class));
+        });
 
-        a = new RechargeModel("DataCard", covers[5]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llMetro).setOnClickListener(v -> {
+            startActivity(new Intent(mContext, MetroBillActivity.class));
+        });
+        view.findViewById(R.id.llMoneyTrans).setOnClickListener(v -> {
+            if (!pref.get(AppSettings.BankAccountNumber).isEmpty() && !pref.get(AppSettings.Bankname).isEmpty() && !pref.get(AppSettings.PayeeName).isEmpty()
+                    && !pref.get(AppSettings.BankIfsc).isEmpty() && !pref.get(AppSettings.BankAccountNumber).isEmpty()) {
+                mContext.startActivity(new Intent(mContext, MoneyTransferActivity.class));
+            } else {
+                Toast.makeText(mContext, "Please update your bank details.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        view.findViewById(R.id.llFlipkart).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.flipkart.com/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.llZomato).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.zomato.com/"));
+            mContext.startActivity(browserIntent);
+        });
 
-        a = new RechargeModel("Insurance", covers[6]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llSwiggy).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.swiggy.com/"));
+            mContext.startActivity(browserIntent);
+        });
 
-        a = new RechargeModel("Broadband", covers[7]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llAmazon).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amazon.in/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.llSnapdeal).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.snapdeal.com/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.llMyntra).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.myntra.com/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.llOyo).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.oyorooms.com/"));
+            mContext.startActivity(browserIntent);
+        });
 
-        a = new RechargeModel("Water", covers[8]);
-        rechargelist.add(a);
+        view.findViewById(R.id.llGoIbibo).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.goibibo.com/"));
+            mContext.startActivity(browserIntent);
+        });
 
-        a = new RechargeModel("Gas", covers[9]);
-        rechargelist.add(a);
-
-        a = new RechargeModel("Metro", covers[10]);
-        rechargelist.add(a);
-
-        a = new RechargeModel("Wallet", covers[11]);
-        rechargelist.add(a);
-
-        a = new RechargeModel("Recharge History", covers[12]);
-        rechargelist.add(a);
-
-        a = new RechargeModel("Deal with us", covers[13]);
-        rechargelist.add(a);
-
-
-        adapter_recharge = new Adapter_recharge(getActivity(), rechargelist, true);
-        rvRecharge.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        rvRecharge.setAdapter(adapter_recharge);
-
-
-        //Preferences
-        pref = new Preferences(getActivity());
-
-        //loader
-        loader = new CustomLoader(getActivity(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen);
-
+        view.findViewById(R.id.llMakeMyTrip).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.makemytrip.com/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.Trivago).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.trivago.in/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.Trivago).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.trivago.in/"));
+            mContext.startActivity(browserIntent);
+        });
+        view.findViewById(R.id.llEasyMyTrip).setOnClickListener(v -> {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.easemytrip.com/"));
+            mContext.startActivity(browserIntent);
+        });
 
     }
 
     //==================================================Load Fragment=============================================//
     public void loadFragment(Fragment fragment) {
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
-       /* transaction.setCustomAnimations(
-                R.anim.card_flip_right_in, R.anim.card_flip_right_out,
-                R.anim.card_flip_left_in, R.anim.card_flip_left_out);*/
         transaction.replace(R.id.framelayout, fragment);
         transaction.commit();
     }
