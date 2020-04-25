@@ -509,6 +509,7 @@ public class DTHListActivity extends AppCompatActivity implements View.OnClickLi
                                     EasyToast.error(DTHListActivity.this, "No Internet Connnection");
                                 }
                             } else {
+                                RechargeOrderStatusUpdateApi("", OrderId, "Success", "Wallet", "Wallet", TransactionId, "", "", "", "", "", "DTH", rech_mobile, rech_order_id, rech_status, rech_type);
                                 EasyToast.error(DTHListActivity.this, response.getString("resText"));
                                 loader.cancel();
                             }
