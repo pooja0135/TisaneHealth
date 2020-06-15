@@ -5,28 +5,9 @@ import android.app.Dialog;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
-
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.StringRequestListener;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.core.app.ActivityCompat;
-import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Gravity;
@@ -39,6 +20,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -57,8 +53,8 @@ import com.tisanehealth.Fragment.Bank.BankManagement;
 import com.tisanehealth.Fragment.DashBoardFragment;
 import com.tisanehealth.Fragment.DashBoardGuestFragment;
 import com.tisanehealth.Fragment.PayoutReport.PayoutReportFragment;
-import com.tisanehealth.Fragment.Profile.MemberTopup;
 import com.tisanehealth.Fragment.PinManagement.PinManagement;
+import com.tisanehealth.Fragment.Profile.MemberTopup;
 import com.tisanehealth.Fragment.Repurchase.BusinessFragment;
 import com.tisanehealth.Fragment.SettingFragment;
 import com.tisanehealth.Fragment.Team.TeamFragment;
@@ -67,9 +63,9 @@ import com.tisanehealth.Helper.Preferences;
 import com.tisanehealth.Helper.RecyclerTouchListener;
 import com.tisanehealth.Model.recharge.ContactModel;
 import com.tisanehealth.Model.tree.TreeResponse;
+import com.tisanehealth.R;
 import com.tisanehealth.recharge_pay_bill.AddMoneyToWalletActivity;
 import com.tisanehealth.recharge_pay_bill.RechargeHistoryActivity;
-import com.tisanehealth.R;
 import com.tisanehealth.recharge_pay_bill.money_transfer.MoneyTransferHistoryActivity;
 
 import org.json.JSONException;
@@ -78,6 +74,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import io.paperdb.Paper;
+import needle.Needle;
 
 import static com.tisanehealth.Helper.AppUrls.BaseUrl;
 import static com.tisanehealth.Helper.AppUrls.BindDashBoradTreeview;
@@ -112,7 +109,6 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_dash_board);
 
         overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
-
 
 
         //RelativeLayout
@@ -269,7 +265,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
             ActivityCompat.requestPermissions(DashBoardActivity.this, PERMISSIONS, PERMISSION_REQUEST_CODE);
         } else {
             Paper.book().delete("contactlist");
-            GetContactsIntoArrayList();
+            getContact();
         }
 
 
@@ -517,7 +513,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
 
                     //startActivity(new Intent(this, ContactActivity.class));
 
-                    GetContactsIntoArrayList();
+                    getContact();
 
 
                 } else {
@@ -529,7 +525,7 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
                         ActivityCompat.requestPermissions(DashBoardActivity.this, PERMISSIONS, PERMISSION_REQUEST_CODE);
                     } else {
                         Paper.book().delete("contactlist");
-                        GetContactsIntoArrayList();
+                        getContact();
                     }
                 }
                 return;
@@ -538,5 +534,15 @@ public class DashBoardActivity extends AppCompatActivity implements View.OnClick
             // other 'case' lines to check for other
             // permissions this app might request.
         }
+    }
+
+    void getContact() {
+        Needle.onBackgroundThread().execute(new Runnable() {
+            @Override
+            public void run() {
+                GetContactsIntoArrayList();
+            }
+        });
+
     }
 }

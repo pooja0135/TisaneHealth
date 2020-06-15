@@ -228,16 +228,16 @@ public class DashBoardFragment extends Fragment {
         a = new RechargeModel("Metro", covers[10]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Money Transfer", covers[11]);
+        /*a = new RechargeModel("Money Transfer", covers[11]);
+        rechargelist.add(a);*/
+
+        a = new RechargeModel("Wallet", covers[11]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Wallet", covers[12]);
+        a = new RechargeModel("Recharge History", covers[12]);
         rechargelist.add(a);
 
-        a = new RechargeModel("Recharge History", covers[13]);
-        rechargelist.add(a);
-
-        a = new RechargeModel("Deal with us", covers[14]);
+        a = new RechargeModel("Deal with us", covers[13]);
         rechargelist.add(a);
 
 

@@ -164,18 +164,18 @@ public class Adapter_recharge extends RecyclerView.Adapter<Adapter_recharge.MyVi
                         mContext.startActivity(new Intent(mContext, GasBillActivity.class));
                     } else if (position == 10) {
                         mContext.startActivity(new Intent(mContext, MetroBillActivity.class));
-                    } else if (position == 11) {
+                    } /*else if (position == 11) {
                         if (!pref.get(AppSettings.BankAccountNumber).isEmpty() && !pref.get(AppSettings.Bankname).isEmpty() && !pref.get(AppSettings.PayeeName).isEmpty()
                                 && !pref.get(AppSettings.BankIfsc).isEmpty() && !pref.get(AppSettings.BankAccountNumber).isEmpty()) {
                             mContext.startActivity(new Intent(mContext, MoneyTransferActivity.class));
                         } else {
                             Toast.makeText(mContext, "Please update your bank details.", Toast.LENGTH_SHORT).show();
                         }
-                    } else if (position == 12) {
+                    } */else if (position == 11) {
                         mContext.startActivity(new Intent(mContext, AddMoneyToWalletActivity.class));
-                    } else if (position == 13) {
+                    } else if (position == 12) {
                         mContext.startActivity(new Intent(mContext, RechargeHistoryActivity.class));
-                    } else if (position == 14) {
+                    } else if (position == 13) {
                         mContext.startActivity(new Intent(mContext, DealWithUsActivity.class));
                     }
                 }
